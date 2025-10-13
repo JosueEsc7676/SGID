@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gidoc.gdoc.Usuarios.web.controllers.AuthController"
+           stylesheets="@../styles/auth-styles.css"
+           styleClass="root-background">
+
+    <VBox alignment="CENTER" spacing="20" styleClass="main-wrapper">
+        <!-- Encabezado con logo -->
+        <VBox alignment="CENTER" spacing="10" styleClass="header">
+            <ImageView fx:id="logoImage" fitHeight="100" fitWidth="250" styleClass="logo"/>
+            <Label text="SISTEMA DE GESTION DE INCAPACIDAD DE DOCENTES" styleClass="title-main"/>
+            <Label text="Gestión Documental de Docentes" styleClass="title-sub"/>
+        </VBox>
+
+        <!-- Tarjeta de autenticación -->
+        <StackPane styleClass="auth-card">
+            <!-- Panel de Login -->
+            <StackPane fx:id="loginPane">
+                <VBox alignment="CENTER" spacing="15" styleClass="panel login-panel">
+                    <Label text="Iniciar Sesión" styleClass="title-panel"/>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Usuario:" styleClass="form-label"/>
+                        <TextField fx:id="loginUsername" promptText="Ingrese su usuario" styleClass="form-input"/>
+                    </VBox>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Contraseña:" styleClass="form-label"/>
+                        <PasswordField fx:id="loginPassword" promptText="Ingrese su contraseña" styleClass="form-input password-field"/>
+                    </VBox>
+
+                    <Button fx:id="loginButton" text="Ingresar" styleClass="btn-primary"/>
+                    <Label fx:id="loginMessage" styleClass="message-label"/>
+                    <Hyperlink fx:id="recuperarLink" text="¿Olvidó su contraseña?" styleClass="hyperlink"/>
+                </VBox>
+            </StackPane>
+
+            <!-- Panel de Recuperación -->
+            <StackPane fx:id="recuperacionPane" visible="false">
+                <VBox alignment="CENTER" spacing="15" styleClass="panel recuperacion-panel">
+                    <Label text="Recuperar Contraseña" styleClass="title-panel"/>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Email:" styleClass="form-label"/>
+                        <TextField fx:id="recuperacionEmail" promptText="Ingrese su email" styleClass="form-input"/>
+                    </VBox>
+
+                    <Button fx:id="enviarRecuperacionButton" text="Enviar Código" styleClass="btn-primary"/>
+                    <Label fx:id="recuperacionMessage" styleClass="message-label"/>
+                    <Hyperlink fx:id="volverLoginLink" text="Volver al Login" styleClass="hyperlink"/>
+                </VBox>
+            </StackPane>
+
+            <!-- Panel de Código -->
+            <StackPane fx:id="codigoPane" visible="false">
+                <VBox alignment="CENTER" spacing="15" styleClass="panel codigo-panel">
+                    <Label text="Verificar Código" styleClass="title-panel"/>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Código de Verificación:" styleClass="form-label"/>
+                        <TextField fx:id="codigoToken" promptText="Ingrese el código recibido por email" styleClass="form-input"/>
+                    </VBox>
+
+                    <Button fx:id="verificarCodigoButton" text="Verificar Código" styleClass="btn-primary"/>
+                    <Label fx:id="codigoMessage" styleClass="message-label"/>
+                    <Hyperlink fx:id="volverRecuperacionLink" text="Volver a Recuperación" styleClass="hyperlink"/>
+                </VBox>
+            </StackPane>
+
+            <!-- Panel de Cambio de Password -->
+            <StackPane fx:id="cambioPasswordPane" visible="false">
+                <VBox alignment="CENTER" spacing="15" styleClass="panel cambio-password-panel">
+                    <Label text="Nueva Contraseña" styleClass="title-panel"/>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Nueva Contraseña:" styleClass="form-label"/>
+                        <PasswordField fx:id="nuevaPassword" promptText="Ingrese nueva contraseña" styleClass="form-input password-field"/>
+                    </VBox>
+
+                    <VBox spacing="8" styleClass="form-field">
+                        <Label text="Confirmar Contraseña:" styleClass="form-label"/>
+                        <PasswordField fx:id="confirmarPassword" promptText="Confirme la contraseña" styleClass="form-input password-field"/>
+                    </VBox>
+
+                    <Button fx:id="cambiarPasswordButton" text="Cambiar Contraseña" styleClass="btn-primary"/>
+                    <Label fx:id="cambioPasswordMessage" styleClass="message-label"/>
+                </VBox>
+            </StackPane>
+        </StackPane>
+
+        <!-- Footer -->
+        <Label text="© 2025 GDOC - Todos los derechos reservados." styleClass="footer"/>
+    </VBox>
+</StackPane>

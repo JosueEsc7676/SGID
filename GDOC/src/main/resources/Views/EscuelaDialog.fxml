@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gidoc.gdoc.GDYBD.web.controllers.EscuelaDialogController">
+
+    <Label text="Formulario Escuela" style="-fx-font-weight: bold; -fx-font-size: 14"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="C INFRA:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCInfra" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="N°:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNumero" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Distrito:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtDistrito" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Nombre:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Municipio:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtMunicipio" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#cancelar"/>
+        <Button text="Aceptar" onAction="#aceptar"/>
+    </HBox>
+</VBox>

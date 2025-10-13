@@ -1,0 +1,544 @@
+/* ===== ESTILOS GENERALES ===== */
+.root-background {
+    -fx-background-color: linear-gradient(to bottom right, #f7f9fc, #e8eef7);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== CABECERA SUPERIOR ===== */
+.header-home {
+    -fx-background-color: rgb(21, 26, 40);
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+.header-content {
+    -fx-alignment: center-left;
+    -fx-spacing: 20;
+}
+
+.title-main-home {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+}
+
+.title-sub-home {
+    -fx-text-fill: #cdd4e0;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+}
+
+.welcome-text {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.user-info {
+    -fx-text-fill: #a9c1d9;
+    -fx-font-size: 12px;
+}
+
+/* Botón de menú hamburguesa */
+.menu-hamburguesa {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+.menu-hamburguesa:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 5;
+}
+
+.menu-line {
+    -fx-fill: white;
+    -fx-arc-width: 2;
+    -fx-arc-height: 2;
+}
+
+/* Botón de cerrar sesión */
+.btn-logout {
+    -fx-background-color: #f14a4a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.btn-logout:hover {
+    -fx-background-color: #d43c3c;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 7, 0, 0, 3);
+}
+
+/* Logo pequeño */
+.logo-small {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+/* ===== MENÚ LATERAL - COLOR ÚNICO ===== */
+.menu-panel {
+    -fx-background-color: rgb(21, 26, 40); /* Color único sólido */
+    -fx-border-color: rgb(21, 26, 40); /* Mismo color para el borde */
+    -fx-border-width: 0 1 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+/* Contenedor principal del menú */
+.menu-panel .content {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+/* VBox principal del menú */
+.menu-panel .content .vbox {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.menu-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+.menu-user-info {
+    -fx-text-fill: #a9c1d9;
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 15 0;
+    -fx-border-color: rgb(31, 36, 50);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* TitledPanes del menú - Mismo color */
+.titled-pane {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.titled-pane > .title {
+    -fx-background-color: rgb(21, 26, 40); /* Mismo color único */
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+    -fx-padding: 10 15;
+    -fx-border-color: rgb(31, 36, 50);
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.titled-pane > .title:hover {
+    -fx-background-color: rgb(31, 36, 50); /* Color ligeramente más claro al hover */
+}
+
+.titled-pane:expanded > .title {
+    -fx-background-color: rgb(31, 36, 50); /* Color ligeramente más claro cuando está expandido */
+}
+
+.titled-pane > .content {
+    -fx-background-color: rgb(21, 26, 40); /* Mismo color único */
+    -fx-border-color: rgb(31, 36, 50);
+    -fx-border-width: 0 1 1 1;
+    -fx-border-radius: 0 0 5 5;
+    -fx-background-radius: 0 0 5 5;
+}
+
+/* Botones del menú - Mismo color de fondo */
+.menu-item {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+    -fx-text-fill: #e5e5e5;
+    -fx-alignment: center-left;
+    -fx-font-size: 13px;
+    -fx-padding: 8 10;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgb(31, 36, 50); /* Color ligeramente más claro al hover */
+    -fx-text-fill: white;
+    -fx-border-color: rgb(41, 46, 60);
+}
+
+/* VBox dentro de los TitledPanes */
+.titled-pane > .content > .vbox {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+/* Padding interno de los VBox del menú */
+.titled-pane > .content > .vbox > .padding {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+    -fx-padding: 30;
+    -fx-alignment: center;
+    -fx-spacing: 25;
+}
+
+.welcome-title {
+    -fx-text-fill: rgb(21, 26, 40);
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+.feature-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: 200;
+    -fx-pref-height: 150;
+}
+
+.feature-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0, 0, 7);
+    -fx-translate-y: -2;
+}
+
+.feature-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: rgb(21, 26, 40);
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.feature-description {
+    -fx-text-fill: #555;
+    -fx-font-size: 13px;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.btn-feature {
+    -fx-background-color: rgb(21, 26, 40);
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8 20;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.btn-feature:hover {
+    -fx-background-color: rgb(41, 46, 60);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 7, 0, 0, 3);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    -fx-alignment: center;
+    -fx-padding: 15;
+    -fx-background-color: rgb(21, 26, 40);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* ===== ESTILOS ADICIONALES ===== */
+
+/* Separador */
+.separator {
+    -fx-background-color: rgb(31, 36, 50);
+}
+
+/* ScrollPane personalizado */
+.scroll-pane {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: rgb(21, 26, 40); /* Color único */
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(41, 46, 60);
+    -fx-background-radius: 5;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgb(61, 66, 80);
+}
+
+/* Efectos de transición suave */
+* {
+    -fx-transition: all 0.3s ease;
+}
+
+
+
+/* ===== ESTILOS ADICIONALES - SIN MODIFICAR EXISTENTES ===== */
+
+/* Efectos de sombra mejorados para las tarjetas */
+.feature-card {
+-fx-border-color: linear-gradient(to bottom, #e0e0e0, #f0f0f0);
+-fx-border-width: 1;
+}
+
+/* Efectos de hover más suaves para botones del menú */
+.menu-item {
+-fx-transition: all 0.2s ease;
+-fx-background-insets: 0;
+}
+
+.menu-item:pressed {
+-fx-scale-x: 0.98;
+-fx-scale-y: 0.98;
+}
+
+/* Mejoras visuales para los TitledPane expandidos */
+.titled-pane:expanded > .title {
+-fx-effect: dropshadow(gaussian, rgba(255,255,255,0.1), 5, 0, 0, 1);
+}
+
+/* Efectos de profundidad para el menú lateral */
+.menu-panel {
+-fx-background-insets: 0;
+-fx-padding: 0;
+}
+
+/* Mejoras en los botones de características */
+.btn-feature {
+-fx-border-color: transparent;
+-fx-border-width: 0;
+-fx-background-insets: 0;
+}
+
+.btn-feature:pressed {
+-fx-translate-y: 1;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 3, 0, 0, 2);
+}
+
+/* Efectos de glow sutil en hover para tarjetas principales */
+.feature-card:hover {
+-fx-background-color: linear-gradient(to bottom, #ffffff, #f8fafd);
+}
+
+/* Mejoras en la cabecera para mejor contraste */
+.header-content {
+-fx-background-insets: 0;
+}
+
+/* Efectos de transición mejorados para el menú hamburguesa */
+.menu-hamburguesa:hover .menu-line {
+-fx-fill: #a9c1d9;
+-fx-transition: all 0.3s ease;
+}
+
+/* Estilos para estados deshabilitados */
+.menu-item:disabled {
+-fx-opacity: 0.6;
+-fx-cursor: default;
+}
+
+.btn-feature:disabled {
+-fx-background-color: #6c757d;
+-fx-cursor: default;
+}
+
+/* Efectos de foco mejorados */
+.menu-item:focused {
+-fx-border-color: #a9c1d9;
+-fx-border-width: 1;
+-fx-border-radius: 3;
+}
+
+.btn-feature:focused {
+-fx-border-color: rgba(169, 193, 217, 0.5);
+-fx-border-width: 2;
+-fx-border-radius: 5;
+}
+
+/* Mejoras visuales para el scrollbar del menú */
+.menu-panel .scroll-bar:vertical .increment-button,
+.menu-panel .scroll-bar:vertical .decrement-button {
+-fx-background-color: rgb(21, 26, 40);
+-fx-border-color: transparent;
+}
+
+.menu-panel .scroll-bar:vertical .increment-arrow,
+.menu-panel .scroll-bar:vertical .decrement-arrow {
+-fx-background-color: rgb(61, 66, 80);
+}
+
+/* Efectos de sombra sutil para el footer */
+.footer {
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, -2);
+}
+
+/* Mejoras de transición para el contenido principal */
+.main-content {
+-fx-background-insets: 0;
+}
+
+/* Efectos de pulso sutil para elementos interactivos */
+@keyframes subtle-pulse {
+0% { -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5); }
+50% { -fx-effect: dropshadow(gaussian, rgba(21,26,40,0.2), 12, 0, 0, 6); }
+100% { -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5); }
+}
+
+.feature-card:hover {
+-fx-animation: subtle-pulse 2s infinite;
+}
+
+/* Mejoras de rendimiento visual */
+
+{
+-fx-background-insets: 0;
+-fx-border-insets: 0;
+-fx-focus-color: transparent;
+-fx-faint-focus-color: transparent;
+}
+
+/* Efectos de transición suave para el menú deslizante */
+.menu-panel {
+-fx-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mejoras de accesibilidad - contraste mejorado */
+.title-main-home, .welcome-title {
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 0, 0, 0, 1);
+}
+
+/* Estados activos para botones */
+.btn-logout:armed, .btn-feature:armed {
+-fx-scale-x: 0.95;
+-fx-scale-y: 0.95;
+}
+
+/* Efectos de profundidad para el menú lateral cuando está visible */
+.menu-panel:visible {
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 0);
+}
+
+/* Mejoras de renderizado para mejor performance */
+.root-background {
+-fx-background-insets: 0;
+-fx-padding: 0;
+}
+
+/* Efectos de transición suave para todos los elementos hover */
+*:hover {
+-fx-transition: all 0.2s ease;
+}
+
+/* Estilos para mejorar la legibilidad del texto */
+.feature-description, .user-info, .menu-user-info {
+-fx-font-smoothing-type: gray;
+}
+
+/* Mejoras visuales para los separadores */
+.separator .line {
+-fx-border-color: rgb(31, 36, 50);
+-fx-border-width: 1;
+}
+
+/* Efectos de escala suave para íconos */
+.logo-small:hover {
+-fx-scale-x: 1.02;
+-fx-scale-y: 1.02;
+}
+
+/* ===== ESTILOS ADICIONALES PARA EL MENÚ CENTRADO ===== */
+
+/* Contenedor principal del menú centrado */
+.menu-panel .content .vbox {
+    -fx-alignment: center;
+}
+
+/* TitledPanes centrados */
+.centered-titled-pane {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.centered-titled-pane > .title {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.centered-titled-pane > .content {
+    -fx-alignment: center;
+}
+
+/* Botones del menú centrados */
+.menu-item-centered {
+    -fx-background-color: rgb(21, 26, 40);
+    -fx-text-fill: #e5e5e5;
+    -fx-alignment: center;
+    -fx-font-size: 13px;
+    -fx-padding: 8 15;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-pref-width: 180px;
+    -fx-text-alignment: center;
+}
+
+.menu-item-centered:hover {
+    -fx-background-color: rgb(31, 36, 50);
+    -fx-text-fill: white;
+    -fx-border-color: rgb(41, 46, 60);
+}
+
+/* Footer dentro del menú */
+.menu-footer {
+    -fx-text-fill: #a9c1d9;
+    -fx-font-size: 11px;
+    -fx-padding: 15 10 10 10;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+/* Separador del menú */
+.menu-separator {
+    -fx-padding: 10 0 5 0;
+}
+
+.menu-separator .line {
+    -fx-border-color: rgb(31, 36, 50);
+    -fx-border-width: 1;
+}
+
+/* Asegurar que el contenido del menú esté centrado */
+.menu-panel .vbox {
+    -fx-alignment: top-center;
+}
+
+/* Ajustes para los VBox internos del menú */
+.menu-panel .vbox .vbox {
+    -fx-alignment: center;
+}
+
+/* Mejoras de alineación para los textos */
+.menu-title {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.menu-user-info {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}

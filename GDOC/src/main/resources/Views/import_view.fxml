@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gidoc.gdoc.GDYBD.web.controllers.ImportController"
+            prefWidth="1000" prefHeight="600">
+
+    <children>
+        <VBox spacing="12" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+
+            <!-- Fila superior con controles -->
+            <HBox spacing="10">
+                <Button text="Seleccionar Archivo" fx:id="seleccionarArchivoButton" onAction="#seleccionarArchivo"/>
+                <Label fx:id="fileLabel" text="Ningún archivo seleccionado"/>
+                <Label text="Tipo:"/>
+                <ComboBox fx:id="tipoBaseCombo"/>
+                <Button text="Importar" fx:id="importarButton" onAction="#importarDatos"/>
+                <Button text="Actualizar" fx:id="actualizarButton" onAction="#actualizarDatos"/>
+                <ProgressBar fx:id="progressBar" prefWidth="200" progress="0"/>
+            </HBox>
+
+            <!-- Botones CRUD corregidos -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <children>
+                    <Button text="Agregar Escuela" onAction="#agregarEscuela"/>
+                    <Button text="Editar Escuela" onAction="#editarEscuela"/>
+                    <Button text="Eliminar Escuela" onAction="#eliminarEscuela"/>
+                </children>
+            </HBox>
+
+            <!-- Pestañas con tablas -->
+            <TabPane fx:id="tabPane" prefHeight="520">
+                <tabs>
+                    <Tab text="Docentes">
+                        <AnchorPane>
+                            <TableView fx:id="tblDocentes" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                                       AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                                <columns>
+                                    <TableColumn text="ID" fx:id="colDocId"/>
+                                    <TableColumn text="Nombre" fx:id="colDocName"/>
+                                    <TableColumn text="Fecha Importación" fx:id="colDocImported"/>
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </Tab>
+
+                    <Tab text="Escuelas">
+                        <AnchorPane>
+                            <TableView fx:id="tblEscuelas" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                                       AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                                <columns>
+                                    <TableColumn text="C INFRA" fx:id="colEscInfra"/>
+                                    <TableColumn text="N°" fx:id="colEscNum"/>
+                                    <TableColumn text="DISTRITO" fx:id="colEscDist"/>
+                                    <TableColumn text="NOMBRE" fx:id="colEscName"/>
+                                    <TableColumn text="MUNICIPIO" fx:id="colEscMun"/>
+                                    <TableColumn text="Fecha Importación" fx:id="colEscImported"/>
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </Tab>
+                </tabs>
+            </TabPane>
+
+        </VBox>
+    </children>
+</AnchorPane>
