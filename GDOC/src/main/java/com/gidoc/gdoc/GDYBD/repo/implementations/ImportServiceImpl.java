@@ -104,7 +104,8 @@ public class ImportServiceImpl implements ImportService {
                 valid = keysNormalized.stream().anyMatch(k -> k.contains("cinfra") || k.contains("numero") || k.contains("nombre"));
             }
 
-            if (!valid) invalidRows.add(i + 1);
+            if (!valid) invalidRows.add(Integer.valueOf(i + 1));
+            ;
         }
         return invalidRows;
     }

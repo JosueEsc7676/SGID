@@ -65,24 +65,24 @@ public class ApplicationManager {
 
     public void mostrarHome(Usuario usuario) {
         try {
-            // Cerrar ventana actual si existe
             if (currentStage != null) {
                 currentStage.close();
             }
 
-            // Abrir home
+            // ✅ Guardar usuario en sesión
+            UserSession userSession = applicationContext.getBean(UserSession.class);
+            userSession.setUsuarioActual(usuario);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/home.fxml"));
             loader.setControllerFactory(applicationContext::getBean);
             Parent root = loader.load();
 
-            HomeController homeController = loader.getController();
-            homeController.setUsuarioLogueado(usuario);
-
             Stage homeStage = new Stage();
-            homeStage.setTitle("Sistema GESTION DE INCAPACIDAD DE DOCENTES - Inicio");
-            homeStage.setScene(new Scene(root, 1200, 800));
-            homeStage.setMinWidth(1000);
-            homeStage.setMinHeight(700);
+            homeStage.setTitle("Sistema GESTIÓN DE INCAPACIDAD DE DOCENTES - Inicio");
+            Scene scene = new Scene(root, 1200, 800); // ✅ Tamaño base
+            homeStage.setScene(scene);
+
+            homeStage.setMaximized(true); // ✅ Pantalla completa
 
             homeStage.setOnCloseRequest(e -> {
                 log.info("Aplicación cerrada desde home");
@@ -96,7 +96,81 @@ public class ApplicationManager {
 
         } catch (Exception e) {
             log.error("Error al mostrar home", e);
-            mostrarLogin(); // Volver al login si hay error
+            mostrarLogin();
+        }
+    }
+    public void cambiarVista(String fxmlPath, String tituloVentana, boolean pantallaCompletaReal) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            loader.setControllerFactory(applicationContext::getBean);
+            Parent root = loader.load();
+
+            if (currentStage == null) {
+                currentStage = new Stage();
+                currentStage.setMinWidth(1400);
+                currentStage.setMinHeight(800);
+                currentStage.setResizable(true);
+            }
+
+            currentStage.setTitle(tituloVentana);
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+
+            if (pantallaCompletaReal) {
+                currentStage.setFullScreen(true);
+                currentStage.setFullScreenExitHint(""); // ✅ sin mensaje molesto// ✅ pantalla completa real
+            } else {
+                currentStage.setMaximized(true);  // ✅ pantalla completa con barra de título
+            }
+
+            currentStage.show();
+
+        } catch (Exception e) {
+            log.error("Error al cambiar vista: {}", fxmlPath, e);
+            mostrarLogin();
+        }
+    }
+
+
+
+
+
+
+    public void mostrarVista(String fxmlPath, String tituloVentana, boolean pantallaCompleta) {
+        try {
+            if (currentStage != null) {
+                currentStage.close();
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            loader.setControllerFactory(applicationContext::getBean);
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle(tituloVentana);
+            Scene scene = new Scene(root, 1200, 800); // ✅ Tamaño base
+            stage.setScene(scene);
+
+            if (pantallaCompleta) {
+                stage.setMaximized(true); // ✅ Pantalla completa
+            } else {
+                stage.setMinWidth(1000);
+                stage.setMinHeight(700);
+            }
+
+            stage.setOnCloseRequest(e -> {
+                log.info("Ventana cerrada: {}", tituloVentana);
+                Platform.exit();
+            });
+
+            stage.show();
+            this.currentStage = stage;
+
+            log.info("Vista mostrada: {}", tituloVentana);
+
+        } catch (Exception e) {
+            log.error("Error al mostrar vista: {}", fxmlPath, e);
+            mostrarLogin(); // fallback
         }
     }
 
