@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600" prefWidth="900"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gidoc.gdoc.GDYBD.web.controllers.EscuelasController">
+
+    <children>
+        <VBox spacing="12" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+
+            <!-- Fila superior -->
+            <HBox spacing="10">
+                <Button fx:id="seleccionarArchivoButton" onAction="#seleccionarArchivo" text="Seleccionar Archivo"/>
+                <Label fx:id="fileLabel" text="Ningún archivo seleccionado"/>
+                <Button fx:id="importarButton" onAction="#importarDatos" text="Importar"/>
+                <Button fx:id="actualizarButton" onAction="#actualizarDatos" text="Actualizar"/>
+                <ProgressBar fx:id="progressBar" prefWidth="200" progress="0"/>
+            </HBox>
+
+            <!-- Botones CRUD -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button onAction="#agregarEscuela" text="Agregar Escuela"/>
+                <Button onAction="#editarEscuela" text="Editar Escuela"/>
+                <Button onAction="#eliminarEscuela" text="Eliminar Escuela"/>
+            </HBox>
+
+            <!-- Botones de navegación -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Volver a Base de Docentes" onAction="#volverABaseDocentes"/>
+                <Button text="Volver al Home" onAction="#volverAlHome"/>
+            </HBox>
+
+            <!-- Tabla Escuelas -->
+            <TableView fx:id="tblEscuelas" prefHeight="480">
+                <columns>
+                    <TableColumn fx:id="colEscInfra" text="C INFRA" prefWidth="150"/>
+                    <TableColumn fx:id="colEscNum" text="N°" prefWidth="100"/>
+                    <TableColumn fx:id="colEscDist" text="DISTRITO" prefWidth="150"/>
+                    <TableColumn fx:id="colEscName" text="NOMBRE" prefWidth="250"/>
+                    <TableColumn fx:id="colEscMun" text="MUNICIPIO" prefWidth="150"/>
+                    <TableColumn fx:id="colEscImported" text="Fecha Importación" prefWidth="150"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+
+        <!-- Overlay flotante con progreso y mensajes -->
+        <StackPane fx:id="overlayPane" visible="false"
+                   style="-fx-background-color: rgba(0,0,0,0.5);"
+                   AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                   AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: gray; -fx-border-radius: 10;">
+                <Label fx:id="overlayLabel" text="Cargando base de Escuelas..."
+                       style="-fx-font-size: 18; -fx-text-fill: black;"/>
+                <ProgressBar fx:id="overlayProgress" prefWidth="250" progress="0"/>
+                <TextArea fx:id="overlayMessages" editable="false" wrapText="true" prefWidth="300" prefHeight="120"
+                          style="-fx-font-size: 14; -fx-text-fill: black;"/>
+            </VBox>
+
+        </StackPane>
+
+    </children>
+</AnchorPane>

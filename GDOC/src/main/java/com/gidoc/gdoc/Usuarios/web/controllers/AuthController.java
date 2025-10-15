@@ -23,6 +23,7 @@ public class AuthController {
 
     private final UsuarioService usuarioService;
     private final ApplicationManager applicationManager;
+    private final UserSession userSession;
 
     // Componentes de Login
     @FXML private StackPane loginPane;
@@ -143,9 +144,9 @@ public class AuthController {
         try {
             log.info("Redirigiendo al home para usuario: {}", usuario.getUsername());
 
-            // Usar ApplicationManager para mostrar el home
-            applicationManager.mostrarHome(usuario);
+            userSession.setUsuarioActual(usuario); // ✅ Guarda el usuario en sesión
 
+            applicationManager.mostrarHome(usuario);
             log.info("Redirección completada exitosamente");
 
         } catch (Exception e) {
@@ -153,6 +154,8 @@ public class AuthController {
             mostrarMensajeLogin("Error al cargar la pantalla principal", true);
         }
     }
+
+
 
     private void enviarSolicitudRecuperacion() {
         try {
