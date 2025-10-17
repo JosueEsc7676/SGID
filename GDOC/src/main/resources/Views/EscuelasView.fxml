@@ -20,17 +20,13 @@
             <Label prefHeight="67.0" prefWidth="476.0" styleClass="header-title" text="ㅤGestion De Bases De Datos [Escuelas]" />
         </HBox>
     </top>
-
     <!-- ====== CONTENIDO PRINCIPAL ====== -->
     <center>
         <!-- Usamos StackPane para apilar el contenido y el overlay (Opción A) -->
         <StackPane>
-
             <HBox spacing="20" style="-fx-padding: 0 0 0 15;" styleClass="content-area">
-
                 <!-- Panel Izquierdo: Tabla y Controles -->
                 <VBox spacing="15" styleClass="main-content" HBox.hgrow="ALWAYS">
-
                     <!-- Barra de herramientas superior -->
                     <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="862.0" spacing="10" styleClass="toolbar toolbar-adjusted">
                         <Button fx:id="seleccionarArchivoButton" onAction="#seleccionarArchivo" prefHeight="38.0" prefWidth="138.0" text="Seleccionar Archivo" />
@@ -39,7 +35,6 @@
                         <Button fx:id="actualizarButton" onAction="#actualizarDatos" text="Actualizar" />
                         <ProgressBar fx:id="progressBar" prefWidth="200" progress="0" />
                     </HBox>
-
                     <!-- Tabla Escuelas -->
                     <TableView fx:id="tblEscuelas" VBox.vgrow="ALWAYS">
                         <columns>
@@ -52,24 +47,16 @@
                         </columns>
                     </TableView>
                 </VBox>
-
                 <VBox alignment="CENTER" prefWidth="180" spacing="15" styleClass="sidebar">
                     <Label style="-fx-text-fill: black; -fx-font-weight: bold;" text="Gestión de Escuelas" />
                     <Button fx:id="btnAgregarEscuela" onAction="#agregarEscuela" text="Agregar Escuela" />
                     <Button fx:id="btnEditarEscuela" onAction="#editarEscuela" text="Editar Escuela" />
                     <Button fx:id="btnEliminarEscuela" onAction="#eliminarEscuela" text="Eliminar Escuela" />
-
-
-
                     <Separator />
-
                     <Label style="-fx-text-fill: black; -fx-font-weight: bold;" text="Navegación" />
                     <Button fx:id="btnBaseDocentes" onAction="#volverABaseDocentes" text="Base de Docentes" />
                     <Button fx:id="btnVolverHome" onAction="#volverAlHome" text="Volver al Home" />
                 </VBox>
-
-
-
             </HBox>
             <!-- ====== OVERLAY FLOTANTE (ahora dentro del StackPane para quedar encima del contenido) ====== -->
             <StackPane fx:id="overlayPane" styleClass="overlay" visible="false">

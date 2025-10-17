@@ -68,15 +68,14 @@
     -fx-text-fill: #2f3542;
 }
 
-/* Fila seleccionada */
 .table-row-cell:selected {
-    -fx-background-color: #2f3542;
+    -fx-background-color: gray; /* azul institucional */
 }
 
-/* Texto en celdas seleccionadas */
 .table-cell:selected {
     -fx-text-fill: white;
 }
+
 
 /* Tamaño y espaciado de filas */
 .table-row-cell {

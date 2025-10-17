@@ -119,7 +119,7 @@
 
 /* Fila seleccionada */
 .table-row-cell:selected {
-    -fx-background-color: #2f3542;
+    -fx-background-color: gray;
 }
 
 /* Texto en celdas seleccionadas */
@@ -134,7 +134,7 @@
 
 
 .table-row-cell:selected {
-    -fx-background-color: #32384100;
+    -fx-background-color: gray;
     -fx-text-fill: white;
 }
 
