@@ -3,6 +3,8 @@
 <?import javafx.scene.layout.*?>
 
 <VBox spacing="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      stylesheets="@../styles/escueladialog.css"
+
       fx:controller="com.gidoc.gdoc.GDYBD.web.controllers.EscuelaDialogController">
 
     <Label text="Formulario Escuela" style="-fx-font-weight: bold; -fx-font-size: 14"/>

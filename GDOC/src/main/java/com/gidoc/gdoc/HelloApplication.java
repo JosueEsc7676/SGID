@@ -86,7 +86,7 @@ public class HelloApplication extends Application {
                 log.info("✅ Usuario administrador ya existe");
             }
         } catch (Exception e) {
-            log.error("❌ Error al crear usuario administrador", e);
+            log.error("Error al crear usuario administrador", e);
         }
     }
 }

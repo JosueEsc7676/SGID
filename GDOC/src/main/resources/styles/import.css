@@ -1,263 +1,163 @@
-/* import.css - Estilo Premium Moderno */
+/* import.css */
 
-/* Estilos generales para el AnchorPane */
+/* ======= General ======= */
 .root {
-    -fx-background-color: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
-    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f0f2f5;
 }
 
-/* Contenedor principal VBox */
-VBox {
-    -fx-padding: 20;
-    -fx-spacing: 15;
-}
-
-/* Estilos para HBox contenedores */
-HBox {
-    -fx-padding: 10;
-    -fx-background-color: transparent;
-}
-
-/* ===== ESTILOS PREMIUM PARA BOTONES ===== */
-.button {
-    -fx-background-color: #303845;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 12 24;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(48, 56, 69, 0.3), 10, 0.3, 0, 2);
-    -fx-cursor: hand;
-    -fx-transition: all 0.3s ease;
-}
-
-.button:hover {
-    -fx-background-color: #3a4556;
-    -fx-effect: dropshadow(gaussian, rgba(48, 56, 69, 0.5), 15, 0.4, 0, 4);
-    -fx-translate-y: -1;
-}
-
-.button:pressed {
-    -fx-background-color: #252d38;
-    -fx-effect: dropshadow(gaussian, rgba(48, 56, 69, 0.2), 5, 0.2, 0, 1);
-    -fx-translate-y: 0;
-}
-
-/* Botón de seleccionar archivo con acento diferente */
-#seleccionarArchivoButton {
-    -fx-background-color: #4a5568;
-    -fx-text-fill: white;
-}
-
-#seleccionarArchivoButton:hover {
-    -fx-background-color: #5a6578;
-}
-
-/* Botón de importar con énfasis */
-#importarButton {
-    -fx-background-color: #2d3748;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(45, 55, 72, 0.4), 12, 0.4, 0, 3);
-}
-
-#importarButton:hover {
-    -fx-background-color: #374151;
-}
-
-/* ===== ESTILOS PARA LABELS ===== */
-.label {
-    -fx-text-fill: #2d3748;
-    -fx-font-size: 14px;
-    -fx-font-weight: 500;
-}
-
-#fileLabel {
-    -fx-font-style: italic;
-    -fx-text-fill: #4a5568;
-    -fx-padding: 8 16;
-    -fx-background-color: rgba(255, 255, 255, 0.8);
-    -fx-background-radius: 6;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 6;
-    -fx-border-width: 1;
-}
-
-/* ===== ESTILOS PREMIUM PARA TABLA ===== */
-.table-view {
-    -fx-background-color: white;
-    -fx-border-color: #e2e8f0;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0.3, 0, 3);
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #303845;
-    -fx-background-radius: 10 10 0 0;
-    -fx-pref-height: 45;
-}
-
-.table-view .column-header {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 13px;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-}
-
-.table-view .table-row-cell {
-    -fx-border-color: transparent;
-    -fx-background-color: transparent;
-    -fx-pref-height: 40;
-}
-
-.table-view .table-row-cell:even {
-    -fx-background-color: #f8fafc;
-}
-
-.table-view .table-row-cell:odd {
-    -fx-background-color: white;
-}
-
-.table-view .table-row-cell:selected {
-    -fx-background-color: #303845;
-    -fx-text-fill: white;
-}
-
-.table-view .table-row-cell:hover {
-    -fx-background-color: #edf2f7;
-}
-
-.table-view .table-cell {
-    -fx-border-color: transparent;
-    -fx-padding: 8 12;
-    -fx-text-fill: #2d3748;
-    -fx-font-size: 13px;
-}
-
-/* Scrollbar de la tabla */
-.table-view .scroll-bar:vertical {
-    -fx-background-color: transparent;
-}
-
-.table-view .scroll-bar:vertical .track {
-    -fx-background-color: #f1f5f9;
-    -fx-border-color: transparent;
+/* ======= Header ======= */
+.header-bar {
+    -fx-background-color: #2f3542;
+    -fx-padding: 20 25;
     -fx-background-radius: 0;
 }
 
-.table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #cbd5e0;
-    -fx-background-radius: 4;
-}
-
-.table-view .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: #a0aec0;
-}
-
-/* ===== ESTILOS PARA PROGRESS BAR ===== */
-.progress-bar {
-    -fx-background-color: #e2e8f0;
-    -fx-background-radius: 10;
-    -fx-pref-height: 12;
-}
-
-.progress-bar .track {
-    -fx-background-color: #e2e8f0;
-    -fx-background-radius: 10;
-}
-
-.progress-bar .bar {
-    -fx-background-color: #303845;
-    -fx-background-radius: 10;
-    -fx-padding: 2;
-}
-
-/* Progress bar del overlay */
-#overlayProgress .bar {
-    -fx-background-color: #303845;
-}
-
-/* ===== ESTILOS PREMIUM PARA OVERLAY ===== */
-#overlayPane {
-    -fx-background-color: rgba(0, 0, 0, 0.7);
-}
-
-#overlayPane > VBox {
-    -fx-background-color: white;
-    -fx-background-radius: 15;
-    -fx-border-color: #303845;
-    -fx-border-width: 2;
-    -fx-border-radius: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0.5, 0, 5);
-    -fx-padding: 30;
-}
-
-/* Label del overlay */
-#overlayLabel {
-    -fx-text-fill: #2d3748;
-    -fx-font-size: 18px;
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 
-/* TextArea del overlay */
-.text-area {
-    -fx-background-color: #f8fafc;
-    -fx-border-color: #e2e8f0;
+/* ======= Section Containers ======= */
+.section-container {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);
+}
+
+/* ======= Buttons ======= */
+.action-button {
+    -fx-background-color: #2f3542;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #57606f;
+}
+
+.nav-button {
+    -fx-background-color: #2f3542;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #57606f;
+}
+
+/* ======= File Label ======= */
+.file-label {
+    -fx-text-fill: #7a7a7a;
+    -fx-font-size: 14px;
+}
+
+/* ======= Table ======= */
+.data-table {
+    -fx-background-color: #6c757d;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-table-cell-border-color: transparent;
+     -fx-text-fill: white;
+
+}
+
+.table-column {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2f3542;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* ====== TABLEVIEW ====== */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dcdde1;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 10;
-    -fx-font-size: 13px;
+    -fx-padding: 5;
+    -fx-table-cell-border-color: transparent;
 }
 
-.text-area .content {
-    -fx-background-color: #f8fafc;
-    -fx-background-radius: 8;
+/* Cabecera de la tabla */
+.table-view .column-header-background {
+    -fx-background-color: #2f3542;
+    -fx-background-radius: 8 8 0 0;
 }
 
-.text-area .scroll-pane {
+.table-view .column-header,
+.table-view .filler {
     -fx-background-color: transparent;
 }
 
-.text-area .scroll-bar:vertical {
-    -fx-background-color: transparent;
+/* === CORREGIDO ===
+   Antes: -fx-text-fill: transparent;
+   Ahora: color visible en encabezados */
+.table-view .column-header .label {
+    -fx-text-fill: white; /* Cambia a #2f3542 si prefieres oscuro */
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
 }
 
-.text-area .scroll-bar:vertical .thumb {
-    -fx-background-color: #cbd5e0;
+/* Celdas normales */
+.table-view .table-cell {
+    -fx-text-fill: #2f3542;
 }
 
-/* ===== ESTILOS PARA BOTONES DE NAVEGACIÓN ===== */
-HBox:last-child .button {
-    -fx-background-color: #4a5568;
-    -fx-font-size: 13px;
-    -fx-padding: 10 20;
+/* Fila seleccionada */
+.table-row-cell:selected {
+    -fx-background-color: #2f3542;
 }
 
-HBox:last-child .button:hover {
-    -fx-background-color: #5a6578;
+/* Texto en celdas seleccionadas */
+.table-cell:selected {
+    -fx-text-fill: white;
 }
 
-/* ===== EFECTOS DE TRANSICIÓN ===== */
-* {
-    -fx-transition-duration: 300ms;
+/* Tamaño y espaciado de filas */
+.table-row-cell {
+    -fx-cell-size: 22px;
 }
 
 
-
-/* Estilo para cuando la tabla está vacía */
-.table-view .placeholder .label {
-    -fx-text-fill: #718096;
-    -fx-font-style: italic;
+.table-row-cell:selected {
+    -fx-background-color: #32384100;
+    -fx-text-fill: white;
 }
 
-/* Efecto de sombra suave para todos los contenedores */
-VBox, HBox {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0.2, 0, 1);
+/* ======= Overlay ======= */
+#overlayPane {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+#overlayLabel {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+#progressBar {
+    -fx-accent: #4a86e8;
+    -fx-pref-height: 8;
+}
+
+#overlayMessages {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }

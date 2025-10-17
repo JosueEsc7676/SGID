@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -51,6 +53,11 @@ public class EscuelasController {
     @FXML private Button importarButton;
     @FXML private Button actualizarButton;
     @FXML private Button seleccionarArchivoButton;
+    @FXML private Button btnAgregarEscuela;
+    @FXML private Button btnEditarEscuela;
+    @FXML private Button btnEliminarEscuela;
+    @FXML private Button btnBaseDocentes;
+    @FXML private Button btnVolverHome;
 
     @FXML private TableView<Escuela> tblEscuelas;
     @FXML private TableColumn<Escuela, String> colEscInfra;
@@ -70,9 +77,10 @@ public class EscuelasController {
 
     @FXML
     public void initialize() {
-        progressBar.setProgress(0);
+        overlayProgress.setProgress(0);
         importarButton.setDisable(true);
         actualizarButton.setDisable(true);
+        asignarIconos();
 
         colEscInfra.setCellValueFactory(new PropertyValueFactory<>("cInfra"));
         colEscNum.setCellValueFactory(new PropertyValueFactory<>("numero"));
@@ -211,6 +219,20 @@ public class EscuelasController {
         alerta.showAndWait();
     }
 
+    private void asignarIconos() {
+        btnAgregarEscuela.setGraphic(crearIcono("add.png"));
+        btnEditarEscuela.setGraphic(crearIcono("edit.png"));
+        btnEliminarEscuela.setGraphic(crearIcono("delete.png"));
+        btnBaseDocentes.setGraphic(crearIcono("docente.png"));
+        btnVolverHome.setGraphic(crearIcono("home.png"));
+    }
+
+    private ImageView crearIcono(String nombreArchivo) {
+        ImageView icono = new ImageView(new Image(getClass().getResourceAsStream("/icons/" + nombreArchivo)));
+        icono.setFitHeight(16);
+        icono.setFitWidth(16);
+        return icono;
+    }
 
     @FXML
     private void volverABaseDocentes() {

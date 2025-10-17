@@ -68,7 +68,7 @@ public class ImportController {
 
     @FXML
     public void initialize() {
-        progressBar.setProgress(0);
+        overlayProgress.setProgress(0);
         importarButton.setDisable(true);
         actualizarButton.setDisable(true);
 
