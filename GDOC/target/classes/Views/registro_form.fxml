@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.FormController" prefWidth="800" prefHeight="400">
+    <children>
+        <GridPane layoutX="10" layoutY="10" hgap="6" vgap="6" prefWidth="780">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="20"/>
+                <ColumnConstraints percentWidth="30"/>
+                <ColumnConstraints percentWidth="20"/>
+                <ColumnConstraints percentWidth="30"/>
+            </columnConstraints>
+
+            <!-- Row 0 -->
+            <Label text="C INFRA" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCInfra" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="NIP" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtNip" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <!-- Row 1 -->
+            <Label text="NOMBRE" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="CENTRO EDUCATIVO" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtCentro" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <!-- Row 2 -->
+            <Label text="MUNICIPIO" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtMunicipio" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="DISTRITO" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtDistrito" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <!-- Row 3 -->
+            <Label text="DESDE" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dpDesde" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="HASTA" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+            <DatePicker fx:id="dpHasta" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+            <!-- Row 4 -->
+            <Label text="DIAS" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtDias" GridPane.rowIndex="4" GridPane.columnIndex="1" editable="false"/>
+
+            <Label text="HORAS" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+            <TextField fx:id="txtHoras" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+
+            <!-- Row 5 -->
+            <Label text="PATOLOGIA" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPatologia" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="OBSERVACIONES" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+            <TextArea fx:id="taObservaciones" GridPane.rowIndex="5" GridPane.columnIndex="3" prefRowCount="3"/>
+
+            <!-- Row 6 -->
+            <Label text="MES" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cbMes" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Button fx:id="btnGuardar" text="Guardar" GridPane.rowIndex="6" GridPane.columnIndex="3" />
+        </GridPane>
+    </children>
+</AnchorPane>

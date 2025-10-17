@@ -67,7 +67,7 @@
                                 <padding>
                                     <Insets top="5" right="5" bottom="5" left="5"/>
                                 </padding>
-                                <Button text="REGISTRO DOCENTE" styleClass="menu-item-centered" onAction="#abrirVistaGeneral"/>
+                                <Button fx:id="btnRegistroDocente" onAction="#abrirRegistroDocente" text="Registro Docente"/>
                                 <Button text="MATERNIDAD Y PATERNIDAD" styleClass="menu-item-centered" onAction="#abrirDashboard"/>
                                 <Button text="DUELOS" styleClass="menu-item-centered" onAction="#abrirAccesosRapidos"/>
                                 <Button text="TERAPIAS Y OTROS" styleClass="menu-item-centered" onAction="#abrirAccesosRapidos"/>
