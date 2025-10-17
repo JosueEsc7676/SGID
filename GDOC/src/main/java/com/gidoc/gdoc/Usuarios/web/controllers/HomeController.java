@@ -146,6 +146,13 @@ public class HomeController {
         applicationManager.cambiarVista("/Views/import_view.fxml", "Importar Docentes",true);
     }
 
+    @FXML
+    private void abrirRegistroDocente() {
+        cerrarMenu();
+        log.info("Abriendo Registrar Docente (REGDOC)");
+        // Ajusta la ruta si tu fichero está en /views o /Views según tu convención
+        applicationManager.cambiarVista("/Views/registro_form.fxml", "Registrar Incapacidad - Registro Docente", true);
+    }
 
 
     // 🔹 Resto de métodos de navegación se mantiene intacto
@@ -157,8 +164,7 @@ public class HomeController {
     @FXML private void abrirImportarDocentes() { cerrarMenu(); log.info("Abriendo Importar Docentes"); }
     @FXML private void abrirBuscarNIP() { cerrarMenu(); log.info("Abriendo Buscar por NIP"); }
     @FXML private void abrirBuscarINFRA() { cerrarMenu(); log.info("Abriendo Buscar INFRA"); }
-    @FXML private void abrirListaDocentes() { cerrarMenu(); log.info("Abriendo Lista de Docentes"); }
-    @FXML private void abrirRegistrarIncapacidad() { cerrarMenu(); log.info("Abriendo Registrar Incapacidad"); }
+
     @FXML private void abrirHistorialIncapacidades() { cerrarMenu(); log.info("Abriendo Historial Incapacidades"); }
     @FXML private void abrirRegistrarMaternidad() { cerrarMenu(); log.info("Abriendo Registrar Maternidad"); }
     @FXML private void abrirReporteWord() { cerrarMenu(); log.info("Abriendo Reporte Word"); }
