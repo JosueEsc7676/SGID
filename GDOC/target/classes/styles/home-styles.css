@@ -81,12 +81,15 @@
 }
 
 /* ===== MENÚ LATERAL - COLOR ÚNICO ===== */
-.menu-panel {
-    -fx-background-color: rgb(21, 26, 40); /* Color único sólido */
-    -fx-border-color: rgb(21, 26, 40); /* Mismo color para el borde */
+.menu-panel-overlay {
+    -fx-background-color: #151A28;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.4), 15, 0, 4, 0);
+    -fx-padding: 10;
+    -fx-border-color: #1e2433;
     -fx-border-width: 0 1 0 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 0);
+    -fx-opacity: 0.97;
 }
+
 
 /* Contenedor principal del menú */
 .menu-panel .content {
@@ -253,36 +256,6 @@
     -fx-background-color: rgb(31, 36, 50);
 }
 
-/* ScrollPane personalizado */
-.scroll-pane {
-    -fx-background-color: rgb(21, 26, 40); /* Color único */
-}
-
-.scroll-pane .viewport {
-    -fx-background-color: rgb(21, 26, 40); /* Color único */
-}
-
-.scroll-pane .scroll-bar:vertical {
-    -fx-background-color: rgb(21, 26, 40); /* Color único */
-}
-
-.scroll-pane .scroll-bar:vertical .track {
-    -fx-background-color: rgb(21, 26, 40); /* Color único */
-}
-
-.scroll-pane .scroll-bar:vertical .thumb {
-    -fx-background-color: rgb(41, 46, 60);
-    -fx-background-radius: 5;
-}
-
-.scroll-pane .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: rgb(61, 66, 80);
-}
-
-/* Efectos de transición suave */
-* {
-    -fx-transition: all 0.3s ease;
-}
 
 
 
@@ -373,6 +346,14 @@
 .menu-panel .scroll-bar:vertical .decrement-button {
 -fx-background-color: rgb(21, 26, 40);
 -fx-border-color: transparent;
+}
+.menu-scroll {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+.menu-scroll .viewport {
+    -fx-background-color: transparent;
 }
 
 .menu-panel .scroll-bar:vertical .increment-arrow,
@@ -542,3 +523,39 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
+
+.main-content {
+    -fx-alignment: CENTER;
+    -fx-padding: 30;
+}
+
+.form-grid {
+    -fx-max-width: 700;
+    -fx-alignment: CENTER;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 1);
+    -fx-padding: 20;
+}
+.menu-scroll {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.menu-scroll .viewport {
+    -fx-background-color: transparent;
+}.menu-scroll .scroll-bar:vertical {
+     -fx-pref-width: 8;
+ }
+
+ .menu-scroll .thumb {
+     -fx-background-color: rgba(169,193,217,0.5);
+     -fx-background-radius: 4;
+ }
+
+ .menu-scroll .thumb:hover {
+     -fx-background-color: rgba(169,193,217,0.8);
+ }
+

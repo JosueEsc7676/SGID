@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.RecordsController"
+      spacing="10" alignment="TOP_CENTER" prefWidth="1000" prefHeight="600" stylesheets="@../styles/meses-view.css">
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Mes:" />
+        <ComboBox fx:id="cbMesFilter" prefWidth="200"/>
+        <Button fx:id="btnLoad" text="Cargar" />
+        <Button fx:id="btnRefresh" text="Refrescar" />
+        <Label fx:id="lblStatus" text="" />
+    </HBox>
+
+    <TableView fx:id="tableRecords" prefHeight="450" prefWidth="980">
+        <columns>
+            <TableColumn fx:id="colCInfra" text="C INFRA" prefWidth="90"/>
+            <TableColumn fx:id="colNip" text="NIP" prefWidth="90"/>
+            <TableColumn fx:id="colNombre" text="NOMBRE" prefWidth="160"/>
+            <TableColumn fx:id="colCentro" text="CENTRO EDUCATIVO" prefWidth="140"/>
+            <TableColumn fx:id="colMunicipio" text="MUNICIPIO" prefWidth="120"/>
+            <TableColumn fx:id="colDistrito" text="DISTRITO" prefWidth="90"/>
+            <TableColumn fx:id="colDias" text="DIAS" prefWidth="60"/>
+            <TableColumn fx:id="colHoras" text="HORAS" prefWidth="60"/>
+            <TableColumn fx:id="colDesde" text="DESDE" prefWidth="80"/>
+            <TableColumn fx:id="colHasta" text="HASTA" prefWidth="80"/>
+            <TableColumn fx:id="colPatologia" text="PATOLOGIA" prefWidth="120"/>
+            <TableColumn fx:id="colObservaciones" text="OBSERVACIONES" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button fx:id="btnEdit" text="Editar seleccionado" />
+        <Button fx:id="btnDelete" text="Eliminar seleccionado" />
+        <Button fx:id="btnClose" text="Cerrar" />
+    </HBox>
+</VBox>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>  <!-- ← AGREGAR ESTA IMPORT -->
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.HistorialMensualController"
+      spacing="10">  <!-- ← QUITAR padding="10" de aquí -->
+
+    <!-- Agregar el padding correctamente aquí: -->
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Filtro y búsqueda -->
+    <HBox spacing="10">
+        <ComboBox fx:id="cbMesFilter" promptText="Seleccionar Mes"/>
+        <TextField fx:id="tfNip" promptText="Buscar por NIP"/>
+        <TextField fx:id="tfCInfra" promptText="Buscar por C_INFRA"/>
+        <Button fx:id="btnLoad" text="Cargar"/>
+        <Button fx:id="btnRefresh" text="Refrescar"/>
+        <Button fx:id="btnImportar" text="Importar Excel"/>
+        <Button fx:id="btnTodosLosMeses" text="Todos los Meses" onAction="#mostrarTodosLosMeses"/>
+
+    </HBox>
+
+    <!-- Tabla de registros -->
+    <TableView fx:id="tableRecords" prefHeight="400">
+        <columns>
+            <TableColumn text="C_INFRA" fx:id="colCInfra"/>
+            <TableColumn text="NIP" fx:id="colNip"/>
+            <TableColumn text="Nombre" fx:id="colNombre"/>
+            <TableColumn text="Centro" fx:id="colCentro"/>
+            <TableColumn text="Municipio" fx:id="colMunicipio"/>
+            <TableColumn text="Distrito" fx:id="colDistrito"/>
+            <TableColumn text="Días" fx:id="colDias"/>
+            <TableColumn text="Horas" fx:id="colHoras"/>
+            <TableColumn text="Desde" fx:id="colDesde"/>
+            <TableColumn text="Hasta" fx:id="colHasta"/>
+            <TableColumn text="Patología" fx:id="colPatologia"/>
+            <TableColumn text="Observaciones" fx:id="colObservaciones"/>
+        </columns>
+    </TableView>
+
+    <!-- Acciones -->
+    <HBox spacing="10">
+        <Button fx:id="btnEdit" text="Editar"/>
+        <Button fx:id="btnDelete" text="Eliminar"/>
+        <Button fx:id="btnClose" text="Cerrar"/>
+        <Label fx:id="lblStatus" text=""/>
+    </HBox>
+</VBox>

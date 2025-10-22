@@ -1,9 +1,9 @@
 package com.gidoc.gdoc.REGDOC.domain.services;
 
-import org.springframework.stereotype.Service;
 import com.gidoc.gdoc.REGDOC.domain.dto.RegistroDTO;
 import com.gidoc.gdoc.REGDOC.domain.entities.RegistroMes;
 import com.gidoc.gdoc.REGDOC.repo.interfaces.RegistroMesRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -11,17 +11,35 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RegistroService {
+public class HistorialMensualService {
+
     private final RegistroMesRepository repo;
 
-    public RegistroService(RegistroMesRepository repo) {
+    public HistorialMensualService(RegistroMesRepository repo) {
         this.repo = repo;
+    }
+
+    public List<RegistroMes> buscarRegistros(String mes, String nip, String cInfra) {
+        if (mes != null && !mes.isBlank()) {
+            if (nip != null && !nip.isBlank()) return repo.findByMesAndNipIgnoreCase(mes, nip);
+            if (cInfra != null && !cInfra.isBlank()) return repo.findByMesAndCInfraIgnoreCase(mes, cInfra);
+            return repo.findByMesIgnoreCase(mes);
+        } else {
+            if (nip != null && !nip.isBlank()) return repo.findByNip(nip);
+            if (cInfra != null && !cInfra.isBlank()) return repo.findByCInfraIgnoreCase(cInfra);
+            // ✅ NUEVO: Si no hay filtros, mostrar todos los registros ordenados por mes
+            return repo.findAllOrderByMes();
+        }
+    }
+
+    // ✅ NUEVO: Método para obtener la lista de meses disponibles
+    public List<String> obtenerMesesDisponibles() {
+        return repo.findAllMeses();
     }
 
     public RegistroMes save(RegistroDTO dto) {
         int dias = calcularDias(dto.getDesde(), dto.getHasta());
-
-        RegistroMes r = RegistroMes.builder()
+        RegistroMes registro = RegistroMes.builder()
                 .cInfra(dto.getCInfra())
                 .nip(dto.getNip())
                 .nombreDocente(dto.getNombreDocente())
@@ -37,13 +55,7 @@ public class RegistroService {
                 .mes(dto.getMes())
                 .createdAt(LocalDateTime.now())
                 .build();
-
-        return repo.save(r);
-    }
-
-    public List<RegistroMes> findByMes(String mes) {
-        if (mes == null) return List.of();
-        return repo.findByMes(mes.toLowerCase().trim());
+        return repo.save(registro);
     }
 
     public Optional<RegistroMes> findById(Long id) {
@@ -65,12 +77,8 @@ public class RegistroService {
             existing.setPatologia(dto.getPatologia());
             existing.setObservaciones(dto.getObservaciones());
             existing.setMes(dto.getMes());
-            // note: don't change createdAt to preserve original timestamp
             return repo.save(existing);
-        }).orElseGet(() -> {
-            // si no existe, crear uno nuevo (opcional)
-            return save(dto);
-        });
+        }).orElseGet(() -> save(dto));
     }
 
     public void deleteById(Long id) {
@@ -80,10 +88,6 @@ public class RegistroService {
     private int calcularDias(java.time.LocalDate desde, java.time.LocalDate hasta) {
         if (desde == null || hasta == null) return 0;
         long diff = ChronoUnit.DAYS.between(desde, hasta);
-        int dias = (int) diff + 1;
-        return Math.max(0, dias);
+        return (int) Math.max(0, diff + 1);
     }
-
-
 }
-
