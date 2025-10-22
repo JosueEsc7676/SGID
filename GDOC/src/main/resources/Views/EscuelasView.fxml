@@ -36,7 +36,7 @@
                         <ProgressBar fx:id="progressBar" prefWidth="200" progress="0" />
                     </HBox>
                     <!-- Tabla Escuelas -->
-                    <TableView fx:id="tblEscuelas" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="tblEscuelas" VBox.vgrow="ALWAYS" styleClass="data-table">
                         <columns>
                             <TableColumn fx:id="colEscInfra" prefWidth="90" text="C INFRA" />
                             <TableColumn fx:id="colEscNum" prefWidth="100" text="N°" />
@@ -46,6 +46,7 @@
                             <TableColumn fx:id="colEscImported" prefWidth="160" text="Fecha Importación" />
                         </columns>
                     </TableView>
+
                 </VBox>
                 <VBox alignment="CENTER" prefWidth="180" spacing="15" styleClass="sidebar">
                     <Label style="-fx-text-fill: black; -fx-font-weight: bold;" text="Gestión de Escuelas" />

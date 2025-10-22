@@ -11,16 +11,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.*;
 import java.io.IOException;
 import java.time.YearMonth;
+@Component
 
 @Controller
 @Slf4j
@@ -31,9 +37,13 @@ public class HomeController {
     @FXML private Label menuUserInfo;
     @FXML private Button logoutButton;
     @FXML private Button menuButton;
-    @FXML private ScrollPane menuPanel;
+//    @FXML private ScrollPane menuPanel;
     @FXML private VBox adminSecuritySection;
     @FXML private FlowPane quickMonthButtons;
+    @FXML private StackPane mainContent;
+    @FXML private AnchorPane menuPanel;
+    @FXML
+    private Rectangle menuOverlay;
 
     private Usuario usuarioLogueado;
     private boolean menuAbierto = false;
@@ -42,6 +52,8 @@ public class HomeController {
 
     private final ApplicationManager applicationManager;
     private final UserSession userSession; // 🔹 Inyección del UserSession
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     public HomeController(ApplicationManager applicationManager, UserSession userSession) {
@@ -70,6 +82,8 @@ public class HomeController {
                 log.warn("No se encontró usuario en sesión al inicializar Home");
             }
         });
+        // 🔹 Cargar automáticamente el formulario principal al abrir el Home
+        Platform.runLater(this::cargarVistaRegistroDocente);  // 👈 añadido
     }
 
 
@@ -126,13 +140,43 @@ public class HomeController {
         slideOut.setFromX(0);
         slideOut.setToX(-250);
         slideOut.setOnFinished(e -> {
-            menuPanel.setVisible(false);
-            menuPanel.setManaged(false);
-            menuAbierto = false;
+            menuPanel.setVisible(false);   // ✅ Ocultar
+            menuPanel.setManaged(false);   // ✅ Excluir del layout
+            menuAbierto = false;           // ✅ Marcar como cerrado
             animando = false;
         });
         slideOut.play();
     }
+
+
+
+
+    // 🔹 Cargar el formulario REGDOC automáticamente con contexto Spring
+    private void cargarVistaRegistroDocente() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/Views/registro_form.fxml")
+            );
+
+            // ✅ Usa el ApplicationContext para que @Autowired funcione
+            loader.setControllerFactory(applicationContext::getBean);
+
+            Parent vistaForm = loader.load();
+            mainContent.getChildren().setAll(vistaForm);
+
+
+
+            log.info("Formulario REGDOC cargado automáticamente con inyección Spring");
+            // --------- NUEVO: fijar tamaño preferido y margen ----------
+            vistaForm.prefWidth(1500);
+            vistaForm.prefHeight(1200);
+            // ----------------------------------------------------------
+
+        } catch (IOException e) {
+            log.error("Error al cargar el formulario REGDOC automáticamente", e);
+        }
+    }
+
 
     @FXML
     private void logout() {
@@ -144,14 +188,19 @@ public class HomeController {
     @FXML
     private void abrirImportarBD() {
         applicationManager.cambiarVista("/Views/import_view.fxml", "Importar Docentes",true);
+
     }
 
     @FXML
     private void abrirRegistroDocente() {
         cerrarMenu();
         log.info("Abriendo Registrar Docente (REGDOC)");
-        // Ajusta la ruta si tu fichero está en /views o /Views según tu convención
         applicationManager.cambiarVista("/Views/registro_form.fxml", "Registrar Incapacidad - Registro Docente", true);
+    }
+
+    @FXML
+    private void abrirHistorialMensual() { cerrarMenu(); log.info("Abriendo Historial Mensual");
+        applicationManager.cambiarVista("/Views/historial_mensual.fxml", "Gestion De Historial Mensual", true);
     }
 
 
@@ -170,7 +219,6 @@ public class HomeController {
     @FXML private void abrirReporteWord() { cerrarMenu(); log.info("Abriendo Reporte Word"); }
     @FXML private void abrirReporteExcelCentro() { cerrarMenu(); log.info("Abriendo Reporte Excel Centro"); }
     @FXML private void abrirExportarConsolidado() { cerrarMenu(); log.info("Abriendo Exportar Consolidado"); }
-    @FXML private void abrirResumenMensual() { cerrarMenu(); log.info("Abriendo Resumen Mensual"); }
 
     @FXML private void abrirGestionDocumentos() { cerrarMenu(); log.info("Abriendo Gestión de Documentos"); }
     @FXML private void abrirMisDatos() { cerrarMenu(); log.info("Abriendo Mis Datos"); }

@@ -1,63 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.FormController" prefWidth="800" prefHeight="400">
-    <children>
-        <GridPane layoutX="10" layoutY="10" hgap="6" vgap="6" prefWidth="780">
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="1200" prefWidth="1200" styleClass="xdxd" stylesheets="@../styles/formulario.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.FormController">
+    <VBox alignment="TOP_CENTER" spacing="30" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+
+    <Label styleClass="form-title" text="Registro de Incapacidad Docente" />
+
+    <GridPane hgap="16" styleClass="form-grid" vgap="16" GridPane.halignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints percentWidth="20"/>
-                <ColumnConstraints percentWidth="30"/>
-                <ColumnConstraints percentWidth="20"/>
-                <ColumnConstraints percentWidth="30"/>
+                <ColumnConstraints percentWidth="20.0" />
+                <ColumnConstraints percentWidth="28.0" />
+                <ColumnConstraints percentWidth="22.0" />
+                <ColumnConstraints percentWidth="30.0" />
             </columnConstraints>
 
-            <!-- Row 0 -->
-            <Label text="C INFRA" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtCInfra" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <!-- Campos distribuidos por filas -->
+            <Label text="C INFRA" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtCInfra" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label text="NIP" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <TextField fx:id="txtNip" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="NIP" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <TextField fx:id="txtNip" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
-            <!-- Row 1 -->
-            <Label text="NOMBRE" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="NOMBRE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNombre" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label text="CENTRO EDUCATIVO" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <TextField fx:id="txtCentro" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="CENTRO EDUCATIVO" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCentro" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
-            <!-- Row 2 -->
-            <Label text="MUNICIPIO" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtMunicipio" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="MUNICIPIO" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtMunicipio" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label text="DISTRITO" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-            <TextField fx:id="txtDistrito" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            <Label text="DISTRITO" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDistrito" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
-            <!-- Row 3 -->
-            <Label text="DESDE" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <DatePicker fx:id="dpDesde" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="DESDE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <DatePicker fx:id="dpDesde" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-            <Label text="HASTA" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-            <DatePicker fx:id="dpHasta" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+            <Label text="HASTA" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <DatePicker fx:id="dpHasta" GridPane.columnIndex="3" GridPane.rowIndex="3" />
 
-            <!-- Row 4 -->
-            <Label text="DIAS" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtDias" GridPane.rowIndex="4" GridPane.columnIndex="1" editable="false"/>
+            <Label text="DÍAS" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="txtDias" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-            <Label text="HORAS" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
-            <TextField fx:id="txtHoras" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+            <Label text="HORAS" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="txtHoras" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 
-            <!-- Row 5 -->
-            <Label text="PATOLOGIA" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtPatologia" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label text="PATOLOGÍA" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField fx:id="txtPatologia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-            <Label text="OBSERVACIONES" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
-            <TextArea fx:id="taObservaciones" GridPane.rowIndex="5" GridPane.columnIndex="3" prefRowCount="3"/>
+            <Label text="OBSERVACIONES" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextArea fx:id="taObservaciones" prefRowCount="3" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
-            <!-- Row 6 -->
-            <Label text="MES" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="cbMes" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label text="MES" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <ComboBox fx:id="cbMes" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-            <Button fx:id="btnGuardar" text="Guardar" GridPane.rowIndex="6" GridPane.columnIndex="3" />
+            <!-- Botón alineado a la derecha -->
+        <HBox alignment="CENTER_RIGHT" spacing="14.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11">
+
+            <!-- Botón Guardar: tamaño fijo controlable -->
+            <Button fx:id="btnGuardar" maxWidth="160" minWidth="80" prefHeight="38" prefWidth="110" styleClass="button-primary" text="Guardar" />
+
+            <!-- Botón Ver registros: tamaño fijo controlable -->
+            <Button fx:id="btnViewRecords" maxWidth="260" minWidth="190" prefHeight="29.0" prefWidth="190" styleClass="button-primary2" text="Ver registros del mes" />
+        </HBox>
+
+        <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" />
+            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" />
+      </rowConstraints>
         </GridPane>
-    </children>
+
+    <HBox alignment="CENTER_RIGHT" spacing="20" />
+    </VBox>
+
 </AnchorPane>

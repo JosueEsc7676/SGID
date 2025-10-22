@@ -66,7 +66,7 @@
 
 /* ======= Table ======= */
 .data-table {
-    -fx-background-color: #6c757d;
+    -fx-background-color: white;
     -fx-border-color: #dcdcdc;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
@@ -82,61 +82,34 @@
     -fx-alignment: CENTER_LEFT;
 }
 
-/* ====== TABLEVIEW ====== */
-.table-view {
-    -fx-background-color: white;
-    -fx-border-color: #dcdde1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 5;
-    -fx-table-cell-border-color: transparent;
+/* Encabezados de TableView estilo institucional */
+.data-table .column-header-background {
+    -fx-background-color: #2f3542; /* mismo color que botones */
 }
 
-/* Cabecera de la tabla */
-.table-view .column-header-background {
-    -fx-background-color: #2f3542;
-    -fx-background-radius: 8 8 0 0;
-}
-
-.table-view .column-header,
-.table-view .filler {
-    -fx-background-color: transparent;
-}
-
-/* === CORREGIDO ===
-   Antes: -fx-text-fill: transparent;
-   Ahora: color visible en encabezados */
-.table-view .column-header .label {
-    -fx-text-fill: white; /* Cambia a #2f3542 si prefieres oscuro */
+.data-table .column-header,
+.data-table .column-header .label {
+    -fx-text-fill: white; /* letra blanca */
     -fx-font-weight: bold;
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: CENTER;
 }
 
-/* Celdas normales */
-.table-view .table-cell {
-    -fx-text-fill: #2f3542;
+/* Filas seleccionadas: fondo + texto blanco */
+.data-table .table-row-cell:filled:selected {
+    -fx-background-color: #2f3542; /* mismo color que botones */
 }
 
-/* Fila seleccionada */
-.table-row-cell:selected {
-    -fx-background-color: gray;
-}
-
-/* Texto en celdas seleccionadas */
-.table-cell:selected {
-    -fx-text-fill: white;
-}
-
-/* Tamaño y espaciado de filas */
-.table-row-cell {
-    -fx-cell-size: 22px;
+.data-table .table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: white; /* texto blanco al seleccionar */
 }
 
 
-.table-row-cell:selected {
-    -fx-background-color: gray;
-    -fx-text-fill: white;
+/* Opcional: separar columnas con líneas claras */
+.data-table .table-cell {
+    -fx-border-color: #d1d1d1;
+    -fx-border-width: 0 0 1 0; /* línea inferior */
 }
+
 
 /* ======= Overlay ======= */
 #overlayPane {

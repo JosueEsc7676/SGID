@@ -1,149 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.gidoc.gdoc.Usuarios.web.controllers.HomeController"
-            stylesheets="@../styles/home-styles.css"
-            styleClass="root-background">
+<StackPane fx:id="rootStack" styleClass="root-background" stylesheets="@../styles/home-styles.css"
+           xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gidoc.gdoc.Usuarios.web.controllers.HomeController">
 
-    <!-- 🔹 CABECERA SUPERIOR -->
-    <top>
-        <VBox styleClass="header-home">
-            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-content">
-                <!-- Botón Menú Hamburguesa -->
-                <Button fx:id="menuButton" styleClass="menu-hamburguesa" onAction="#toggleMenu">
-                    <graphic>
-                        <VBox spacing="3">
-                            <Rectangle width="20" height="2" styleClass="menu-line"/>
-                            <Rectangle width="20" height="2" styleClass="menu-line"/>
-                            <Rectangle width="20" height="2" styleClass="menu-line"/>
+    <AnchorPane>
+
+        <!-- ===================== -->
+        <!-- LAYOUT PRINCIPAL -->
+        <!-- ===================== -->
+        <BorderPane fx:id="mainLayout"
+                    AnchorPane.topAnchor="0"
+                    AnchorPane.bottomAnchor="0"
+                    AnchorPane.leftAnchor="0"
+                    AnchorPane.rightAnchor="0">
+
+            <top>
+                <VBox styleClass="header-home">
+                    <HBox spacing="20" styleClass="header-content">
+
+                        <!-- Botón hamburguesa -->
+                        <Button fx:id="menuButton"
+                                alignment="CENTER_RIGHT"
+                                contentDisplay="GRAPHIC_ONLY"
+                                onAction="#toggleMenu"
+                                prefWidth="50"
+                                style="-fx-background-color: transparent;"
+                                styleClass="menu-hamburguesa">
+                            <graphic>
+                                <VBox alignment="CENTER_RIGHT" spacing="3">
+                                    <Rectangle width="20" height="2" styleClass="menu-line"/>
+                                    <Rectangle width="20" height="2" styleClass="menu-line"/>
+                                    <Rectangle width="20" height="2" styleClass="menu-line"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+
+                        <!-- Logo -->
+                        <ImageView fitHeight="45" fitWidth="140" styleClass="logo-small"/>
+
+                        <!-- Títulos -->
+                        <VBox spacing="2">
+                            <Label text="SISTEMA DE GESTIÓN DE INCAPACIDAD DE DOCENTES" styleClass="title-main-home"/>
+                            <Label text="Gestión Documental de Docentes" styleClass="title-sub-home"/>
                         </VBox>
-                    </graphic>
-                </Button>
 
-                <!-- Logo -->
-                <ImageView fitHeight="45" fitWidth="140" styleClass="logo-small"/>
+                        <Region HBox.hgrow="ALWAYS"/>
 
-                <!-- Título -->
-                <VBox spacing="2">
-                    <Label text="SISTEMA DE GESTIÓN DE INCAPACIDAD DE DOCENTES" styleClass="title-main-home"/>
-                    <Label text="Gestión Documental de Docentes" styleClass="title-sub-home"/>
+                        <!-- Info usuario -->
+                        <VBox alignment="CENTER_RIGHT" spacing="5">
+                            <Label fx:id="welcomeLabel" styleClass="welcome-text"/>
+                            <Label fx:id="userInfoLabel" styleClass="user-info"/>
+                            <Button fx:id="logoutButton" text="Cerrar Sesión" styleClass="btn-logout" onAction="#logout"/>
+                        </VBox>
+                    </HBox>
+                    <Separator/>
                 </VBox>
+            </top>
 
-                <!-- Información del usuario -->
-                <VBox alignment="CENTER_RIGHT" spacing="5" HBox.hgrow="ALWAYS">
-                    <Label fx:id="welcomeLabel" styleClass="welcome-text"/>
-                    <Label fx:id="userInfoLabel" styleClass="user-info"/>
-                    <Button fx:id="logoutButton" text="Cerrar Sesión" styleClass="btn-logout" onAction="#logout"/>
-                </VBox>
-            </HBox>
-            <Separator/>
-        </VBox>
-    </top>
+            <center>
+                <StackPane fx:id="mainContent" styleClass="main-content">
+                    <VBox alignment="CENTER" spacing="25">
+                        <Label text="¡Bienvenido al Sistema GIDOC!" styleClass="welcome-title"/>
+                    </VBox>
+                </StackPane>
+            </center>
+        </BorderPane>
 
-    <!-- 🔹 MENÚ LATERAL (MODIFICADO) -->
-    <left>
-        <ScrollPane fx:id="menuPanel" styleClass="menu-panel" visible="false" managed="false"
-                    fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
-            <content>
-                <VBox spacing="12" VBox.vgrow="ALWAYS">
-                    <padding>
-                        <Insets top="15" right="15" bottom="15" left="15"/>
-                    </padding>
+        <!-- ===================== -->
+        <!-- MENÚ LATERAL CON SCROLL -->
+        <!-- ===================== -->
+        <AnchorPane fx:id="menuPanel"
+                    prefWidth="300"
+                    maxWidth="300"
+                    minWidth="300"
+                    visible="false"
+                    managed="false"
+                    style="-fx-background-color: #1E2233; -fx-border-color: #2A2F40; -fx-border-width: 0 2 0 0;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 2, 0);"
+                    AnchorPane.topAnchor="90"
+                    AnchorPane.bottomAnchor="0"
+                    AnchorPane.leftAnchor="0">
 
-                    <!-- Contenido centrado -->
-                    <VBox alignment="CENTER" spacing="12" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="menuScroll"
+                        fitToWidth="true"
+                        hbarPolicy="NEVER"
+                        vbarPolicy="AS_NEEDED"
+                        AnchorPane.topAnchor="0"
+                        AnchorPane.bottomAnchor="0"
+                        AnchorPane.leftAnchor="0"
+                        AnchorPane.rightAnchor="0"
+                        styleClass="menu-scroll">
+
+                <!-- VBox principal que contiene todo -->
+                <VBox spacing="0" alignment="TOP_CENTER" style="-fx-padding: 15;">
+
+                    <!-- Contenido del menú -->
+                    <VBox spacing="15" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+
                         <Label text="Menú Principal GDOC" styleClass="menu-title"/>
                         <Label fx:id="menuUserInfo" styleClass="menu-user-info"/>
 
+                        <!-- REGISTROS -->
                         <TitledPane text="REGISTROS PRINCIPALES/ESPECIALES" expanded="false" styleClass="centered-titled-pane">
-                            <VBox spacing="6" alignment="CENTER">
-                                <padding>
-                                    <Insets top="5" right="5" bottom="5" left="5"/>
-                                </padding>
-                                <Button fx:id="btnRegistroDocente" onAction="#abrirRegistroDocente" text="Registro Docente"/>
-                                <Button text="MATERNIDAD Y PATERNIDAD" styleClass="menu-item-centered" onAction="#abrirDashboard"/>
-                                <Button text="DUELOS" styleClass="menu-item-centered" onAction="#abrirAccesosRapidos"/>
-                                <Button text="TERAPIAS Y OTROS" styleClass="menu-item-centered" onAction="#abrirAccesosRapidos"/>
-                                <Button text="SIN GOCE DE SUELDO" styleClass="menu-item-centered" onAction="#abrirAccesosRapidos"/>
+                            <VBox alignment="CENTER" spacing="6">
+                                <Button fx:id="btnRegistroDocente" text="Registro Docente" onAction="#abrirRegistroDocente"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="MATERNIDAD Y PATERNIDAD" onAction="#abrirDashboard"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="DUELOS" onAction="#abrirAccesosRapidos"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="TERAPIAS Y OTROS" onAction="#abrirAccesosRapidos"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="SIN GOCE DE SUELDO" onAction="#abrirAccesosRapidos"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
                             </VBox>
                         </TitledPane>
 
-                        <TitledPane text="FILTROS DE BUSQUEDA" expanded="false" styleClass="centered-titled-pane">
-                            <VBox spacing="6" alignment="CENTER" fx:id="adminSecuritySection">
-                                <padding>
-                                    <Insets top="5" right="5" bottom="5" left="5"/>
-                                </padding>
-                                <Button text="Buscar por NIP" styleClass="menu-item-centered" onAction="#abrirBuscarNIP"/>
-                                <Button text="Buscar por Código INFRA" styleClass="menu-item-centered" onAction="#abrirBuscarINFRA"/>
-                                <Button text="HISTORIAL MENSUAL" styleClass="menu-item-centered"/>
+                        <!-- FILTROS -->
+                        <TitledPane text="FILTROS DE BÚSQUEDA" expanded="false" styleClass="centered-titled-pane">
+                            <VBox fx:id="adminSecuritySection" alignment="CENTER" spacing="6">
+                                <Button text="Buscar por NIP" onAction="#abrirBuscarNIP"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="Buscar por Código INFRA" onAction="#abrirBuscarINFRA"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="HISTORIAL MENSUAL" onAction="#abrirHistorialMensual"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
                             </VBox>
                         </TitledPane>
 
+                        <!-- BASE DE DATOS -->
                         <TitledPane text="BASE DE DATOS" expanded="false" styleClass="centered-titled-pane">
-                            <VBox spacing="6" alignment="CENTER">
-                                <padding>
-                                    <Insets top="5" right="5" bottom="5" left="5"/>
-                                </padding>
-                                <Button text="Importar Docentes (Excel / DBF)" styleClass="menu-item-centered" onAction="#abrirImportarBD"/>
+                            <VBox alignment="CENTER" spacing="6">
+                                <Button text="Importar Docentes (Excel / DBF)" onAction="#abrirImportarBD"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
                             </VBox>
                         </TitledPane>
 
-                        <TitledPane text="CONFIGURACION DE LA CUENTA" expanded="false" styleClass="centered-titled-pane">
-                            <VBox spacing="6" alignment="CENTER">
-                                <padding>
-                                    <Insets top="5" right="5" bottom="5" left="5"/>
-                                </padding>
-                                <!-- Aquí dejaste vacío: mantuve vacío tal cual pediste -->
-                            </VBox>
+                        <!-- CONFIGURACIÓN -->
+                        <TitledPane text="CONFIGURACIÓN DE LA CUENTA" expanded="false" styleClass="centered-titled-pane">
+                            <VBox alignment="CENTER" spacing="6"/>
                         </TitledPane>
+
                     </VBox>
 
-                    <!-- Footer dentro del menú -->
-                    <VBox alignment="CENTER" spacing="0">
-                        <Separator styleClass="menu-separator"/>
-                        <Label text="© 2025 GDOC - Todos los derechos reservados." styleClass="menu-footer"/>
-                    </VBox>
+                    <!-- Footer siempre abajo -->
+                    <Label text="© 2025 GDOC - Todos los derechos reservados." styleClass="menu-footer"/>
                 </VBox>
-            </content>
-        </ScrollPane>
-    </left>
+            </ScrollPane>
+        </AnchorPane>
 
-    <!-- 🔹 CONTENIDO PRINCIPAL -->
-    <center>
-        <VBox alignment="CENTER" spacing="25" styleClass="main-content">
-            <Label text="¡Bienvenido al Sistema GDOC!" styleClass="welcome-title"/>
+    </AnchorPane>
 
-            <HBox alignment="CENTER" spacing="20">
-                <VBox alignment="CENTER" spacing="10" styleClass="feature-card">
-                    <Label text="Gestión de Documentos" styleClass="feature-title"/>
-                    <Label text="Administre sus documentos e incapacidades" styleClass="feature-description"/>
-                    <Button text="Acceder" styleClass="btn-feature" onAction="#abrirGestionDocumentos"/>
-                </VBox>
-
-                <VBox alignment="CENTER" spacing="10" styleClass="feature-card">
-                    <Label text="Mis Datos" styleClass="feature-title"/>
-                    <Label text="Actualice su información personal" styleClass="feature-description"/>
-                    <Button text="Acceder" styleClass="btn-feature" onAction="#abrirMisDatos"/>
-                </VBox>
-
-                <VBox alignment="CENTER" spacing="10" styleClass="feature-card">
-                    <Label text="Reportes" styleClass="feature-title"/>
-                    <Label text="Genere reportes y consultas" styleClass="feature-description"/>
-                    <Button text="Acceder" styleClass="btn-feature" onAction="#abrirReportes"/>
-                </VBox>
-            </HBox>
-        </VBox>
-    </center>
-
-    <!-- 🔹 FOOTER ORIGINAL (VACÍO AHORA) -->
-    <bottom>
-        <!-- El footer ahora está dentro del menú hamburguesa -->
-    </bottom>
-</BorderPane>
+</StackPane>
