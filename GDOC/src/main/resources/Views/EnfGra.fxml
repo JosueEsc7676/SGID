@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.gidoc.gdoc.Resp.ENFGRA.web.controllers.EnfGraController">
+
+    <!-- Encabezado -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #0D47A1; -fx-padding: 15;">
+            <Label text="Gestión de Enfermedades Graves" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+
+    <!-- Contenido principal -->
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="75"/>
+                </columnConstraints>
+
+                <Label text="C INFRA:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCInfra" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Lugar de Trabajo:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtLugarTrabajo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="NIP:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNip" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Nombre:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Horas:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtHoras" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+                <Label text="Desde:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpDesde" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Hasta:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpHasta" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <Label text="Días:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtHora" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                <Label text="Observaciones:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <TextArea fx:id="txtObservaciones" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+                <Label text="Fecha Recibido:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="dpFechaRecibido" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="btnGuardar" text="Guardar" onAction="#guardarRegistro"
+                        style="-fx-background-color: #C62828; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <Label text="Registros Guardados:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TableView fx:id="tblEnfgra" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colInfra" text="C INFRA"/>
+                    <TableColumn fx:id="colLugar" text="Lugar de Trabajo"/>
+                    <TableColumn fx:id="colNip" text="NIP"/>
+                    <TableColumn fx:id="colNombre" text="Nombre"/>
+                    <TableColumn fx:id="colDesde" text="Desde"/>
+                    <TableColumn fx:id="colHasta" text="Hasta"/>
+                    <TableColumn fx:id="colDias" text="Días"/>
+                    <TableColumn fx:id="colHora" text="Hora"/>
+                    <TableColumn fx:id="colObs" text="Observaciones"/>
+                    <TableColumn fx:id="colFechaRecibido" text="Fecha Recibido"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

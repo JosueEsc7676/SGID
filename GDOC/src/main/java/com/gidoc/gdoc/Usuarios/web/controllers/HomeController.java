@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.time.YearMonth;
@@ -203,6 +204,10 @@ public class HomeController {
         applicationManager.cambiarVista("/Views/historial_mensual.fxml", "Gestion De Historial Mensual", true);
     }
 
+    @FXML
+    private void abrirEnfermedadesGraves() { cerrarMenu(); log.info("Abriendo Enfermedades Graves");
+        applicationManager.cambiarVista("/Views/EnfGra.fxml", "Registro Enfermedades Graves",true);
+    }
 
     // 🔹 Resto de métodos de navegación se mantiene intacto
     @FXML private void abrirDashboard() { cerrarMenu(); log.info("Abriendo Dashboard Principal"); }
@@ -234,4 +239,6 @@ public class HomeController {
     @FXML private void abrirReporteMensual(ActionEvent event) { cerrarMenu(); log.info("Abriendo Reporte Mensual"); }
     @FXML private void abrirFiltrosConsolidado(ActionEvent event) { cerrarMenu(); log.info("Abriendo Filtros Consolidado"); }
     @FXML private void abrirExportarImprimir(ActionEvent event) { cerrarMenu(); log.info("Abriendo Exportar/Imprimir"); }
+
+   // @FXML private void abrirEnfermedadesGraves(ActionEvent event) { cerrarMenu(); log.info("Abriendo Enfermedades Graves");}
 }

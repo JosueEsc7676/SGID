@@ -119,6 +119,8 @@
                                         styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
                                 <Button text="SIN GOCE DE SUELDO" onAction="#abrirAccesosRapidos"
                                         styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
+                                <Button text="ENFERMEDADES GRAVES" onAction="#abrirEnfermedadesGraves"
+                                        styleClass="menu-item-centered" maxWidth="Infinity" wrapText="true"/>
                             </VBox>
                         </TitledPane>
 
