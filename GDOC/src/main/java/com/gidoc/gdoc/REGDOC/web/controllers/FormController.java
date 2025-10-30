@@ -64,6 +64,11 @@ public class FormController {
     @FXML private ComboBox<String> cbMes;
     @FXML private Button btnGuardar;
     @FXML private Button btnViewRecords;
+// FormController.java
+
+    private String hiddenDoc4;
+    private String hiddenDoc5;
+    private String hiddenPens;
 
     private final Preferences prefs = Preferences.userNodeForPackage(FormController.class);
 
@@ -162,8 +167,16 @@ public class FormController {
         if (opt.isPresent()) {
             Docente d = opt.get();
             txtNombre.setText(d.getDepersona());
+            // 👇 Guardamos ocultamente los valores extra
+            hiddenDoc4 = d.getDoc4();
+            hiddenDoc5 = d.getDoc5();
+            hiddenPens = d.getPens();
+
         } else {
             System.out.println("[DEBUG] docente NO encontrado para nip: '" + nip + "'");
+            hiddenDoc4 = null;
+            hiddenDoc5 = null;
+            hiddenPens = null;
         }
     }
 
@@ -285,6 +298,10 @@ public class FormController {
                 .patologia(txtPatologia.getText())
                 .observaciones(taObservaciones.getText())
                 .mes(mes.toLowerCase())
+                // 👇 Agregamos los datos ocultos
+                .doc4(hiddenDoc4)
+                .doc5(hiddenDoc5)
+                .pens(hiddenPens)
                 .build();
 
         try {

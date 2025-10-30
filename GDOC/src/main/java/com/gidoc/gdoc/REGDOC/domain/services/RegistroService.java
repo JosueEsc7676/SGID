@@ -25,6 +25,10 @@ public class RegistroService {
                 .cInfra(dto.getCInfra())
                 .nip(dto.getNip())
                 .nombreDocente(dto.getNombreDocente())
+                .mes(dto.getMes())
+                .doc4(dto.getDoc4())   // 👈 Nuevo
+                .doc5(dto.getDoc5())   // 👈 Nuevo
+                .pens(dto.getPens())
                 .centroEducativo(dto.getCentroEducativo())
                 .municipio(dto.getMunicipio())
                 .distrito(dto.getDistrito())
@@ -55,6 +59,10 @@ public class RegistroService {
             existing.setCInfra(dto.getCInfra());
             existing.setNip(dto.getNip());
             existing.setNombreDocente(dto.getNombreDocente());
+            existing.setDoc4(dto.getDoc4());
+            existing.setDoc5(dto.getDoc5());
+            existing.setPens(dto.getPens());
+
             existing.setCentroEducativo(dto.getCentroEducativo());
             existing.setMunicipio(dto.getMunicipio());
             existing.setDistrito(dto.getDistrito());

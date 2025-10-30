@@ -116,11 +116,18 @@ public class ImportServiceImpl implements ImportService {
             Docente d = new Docente();
             d.setIdpersonaA(firstNonEmpty(r, "idpersona_", "idpersona_a", "IDPERSONA_"));
             d.setDepersona(firstNonEmpty(r, "depersona", "nombre", "DEPERSONA"));
+
+            // 🔹 Nuevos campos
+            d.setDoc4(firstNonEmpty(r, "doc4", "DOC4"));
+            d.setDoc5(firstNonEmpty(r, "doc5", "DOC5"));
+            d.setPens(firstNonEmpty(r, "pens", "PENS"));
+
             d.setImportedAt(LocalDateTime.now());
             entidades.add(d);
         }
         saveInBatchesDocentes(entidades);
     }
+
 
     private void updateDocentes(List<Map<String, String>> rows) {
         for (Map<String, String> r : rows) {

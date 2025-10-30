@@ -18,8 +18,16 @@ public class RegistroMes {
 
     // Campos del formulario
     private String cInfra;
-    private String nip; // guardamos tal cual (varchar)
+    private String nip;
+    // guardamos tal cual (varchar)
     private String nombreDocente;
+    @Column(name = "doc4")
+    private String doc4;
+    @Column(name = "doc5")
+    private String doc5;
+    @Column(name = "pens")
+    private String pens;
+
     private String centroEducativo;
     private String municipio;
     private String distrito;

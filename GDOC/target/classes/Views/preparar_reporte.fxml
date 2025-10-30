@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gidoc.gdoc.REGDOC.web.controllers.PrepararReporteController"
+      spacing="10">
+
+    <!-- Márgenes generales -->
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <!-- Título -->
+    <Label text="Registros seleccionados para reporte"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <!-- Tabla principal -->
+    <TableView fx:id="tableSeleccionados" prefHeight="420" prefWidth="1000">
+        <columns>
+            <TableColumn fx:id="colMunicipio" text="Municipio" prefWidth="120"/>
+            <TableColumn fx:id="colDistrito" text="Distrito" prefWidth="100"/>
+            <TableColumn fx:id="colCInfra" text="C_INFRA" prefWidth="90"/>
+            <TableColumn fx:id="colCentro" text="Centro Educativo" prefWidth="180"/>
+            <TableColumn fx:id="colNip" text="NIP" prefWidth="100"/>
+            <TableColumn fx:id="colNombre" text="Nombre Docente" prefWidth="180"/>
+            <TableColumn fx:id="colDoc4" text="NIT (DOC4)" prefWidth="110"/>
+            <TableColumn fx:id="colDoc5" text="NUP (DOC5)" prefWidth="110"/>
+            <TableColumn fx:id="colPens" text="PENS" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Botones inferiores -->
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="btnLimpiar" text="🧹 Limpiar" />
+        <Button fx:id="btnExportarWord" text="Exportar a Word" />
+        <Button fx:id="btnExportarPDF" text="Exportar a PDF" />
+        <Button fx:id="btnCerrar" text="Cerrar" />
+    </HBox>
+
+</VBox>

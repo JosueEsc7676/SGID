@@ -11,6 +11,11 @@ public class RegistroDTO {
     private String cInfra;
     private String nip;
     private String nombreDocente;
+    // RegistroDTO.java
+    private String doc4;
+    private String doc5;
+    private String pens;
+
     private String centroEducativo;
     private String municipio;
     private String distrito;

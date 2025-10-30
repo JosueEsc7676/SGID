@@ -57,6 +57,9 @@ public class ImportController {
     @FXML private TableColumn<Docente, String> colDocId;
     @FXML private TableColumn<Docente, String> colDocName;
     @FXML private TableColumn<Docente, Object> colDocImported;
+    @FXML private TableColumn<Docente, String> colDoc4;
+    @FXML private TableColumn<Docente, String> colDoc5;
+    @FXML private TableColumn<Docente, String> colPens;
 
     // Overlay flotante
     @FXML private StackPane overlayPane;
@@ -74,6 +77,10 @@ public class ImportController {
 
         colDocId.setCellValueFactory(new PropertyValueFactory<>("idpersonaA"));
         colDocName.setCellValueFactory(new PropertyValueFactory<>("depersona"));
+        colDoc4.setCellValueFactory(new PropertyValueFactory<>("doc4"));
+        colDoc5.setCellValueFactory(new PropertyValueFactory<>("doc5"));
+        colPens.setCellValueFactory(new PropertyValueFactory<>("pens"));
+
         colDocImported.setCellValueFactory(new PropertyValueFactory<>("importedAt"));
         tblDocentes.setItems(FXCollections.observableArrayList(importService.obtenerTodosDocentes()));
     }

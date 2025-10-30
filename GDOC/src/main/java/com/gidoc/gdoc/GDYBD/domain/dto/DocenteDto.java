@@ -10,4 +10,9 @@ public class DocenteDto {
     private String depersona;
     private String nip;
     private String codigoInfra;
+
+    // 🔹 Nuevos campos
+    private String doc4;
+    private String doc5;
+    private String pens;
 }

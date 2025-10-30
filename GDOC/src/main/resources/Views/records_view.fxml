@@ -24,6 +24,8 @@
             <TableColumn fx:id="colCInfra" text="C INFRA" prefWidth="90"/>
             <TableColumn fx:id="colNip" text="NIP" prefWidth="90"/>
             <TableColumn fx:id="colNombre" text="NOMBRE" prefWidth="160"/>
+            <!-- 🔹 Nuevas columnas añadidas -->
+
             <TableColumn fx:id="colCentro" text="CENTRO EDUCATIVO" prefWidth="140"/>
             <TableColumn fx:id="colMunicipio" text="MUNICIPIO" prefWidth="120"/>
             <TableColumn fx:id="colDistrito" text="DISTRITO" prefWidth="90"/>
@@ -33,6 +35,9 @@
             <TableColumn fx:id="colHasta" text="HASTA" prefWidth="80"/>
             <TableColumn fx:id="colPatologia" text="PATOLOGIA" prefWidth="120"/>
             <TableColumn fx:id="colObservaciones" text="OBSERVACIONES" prefWidth="200"/>
+            <TableColumn fx:id="colDoc4" text="NIT" prefWidth="100"/>
+            <TableColumn fx:id="colDoc5" text="NUP" prefWidth="100"/>
+            <TableColumn fx:id="colPens" text="AFP" prefWidth="120"/>
         </columns>
     </TableView>
 

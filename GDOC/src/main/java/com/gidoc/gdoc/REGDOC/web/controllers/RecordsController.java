@@ -61,6 +61,9 @@ public class RecordsController {
     @FXML private TableColumn<RegistroMes, LocalDate> colHasta;
     @FXML private TableColumn<RegistroMes, String> colPatologia;
     @FXML private TableColumn<RegistroMes, String> colObservaciones;
+    @FXML private TableColumn<RegistroMes, String> colDoc4;
+    @FXML private TableColumn<RegistroMes, String> colDoc5;
+    @FXML private TableColumn<RegistroMes, String> colPens;
 
     @FXML private Button btnEdit;
     @FXML private Button btnDelete;
@@ -80,6 +83,9 @@ public class RecordsController {
             cbMesFilter.getSelectionModel().select(defaultMonth.toLowerCase());
             lblStatus.setText("Mes activo: " + defaultMonth);
         }
+        colDoc4.setCellValueFactory(new PropertyValueFactory<>("doc4"));
+        colDoc5.setCellValueFactory(new PropertyValueFactory<>("doc5"));
+        colPens.setCellValueFactory(new PropertyValueFactory<>("pens"));
 
         // columnas (prop names deben coincidir con getters en RegistroMes)
         colCInfra.setCellValueFactory(new PropertyValueFactory<>("cInfra"));

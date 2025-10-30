@@ -54,6 +54,9 @@ public class HistorialMensualService {
                 .observaciones(dto.getObservaciones())
                 .mes(dto.getMes())
                 .createdAt(LocalDateTime.now())
+                .doc4(dto.getDoc4())
+                .doc5(dto.getDoc5())
+                .pens(dto.getPens())
                 .build();
         return repo.save(registro);
     }
@@ -76,7 +79,13 @@ public class HistorialMensualService {
             existing.setDias(calcularDias(dto.getDesde(), dto.getHasta()));
             existing.setPatologia(dto.getPatologia());
             existing.setObservaciones(dto.getObservaciones());
+            existing.setDoc4(dto.getDoc4());
+            existing.setDoc5(dto.getDoc5());
+            existing.setPens(dto.getPens());
+
+
             existing.setMes(dto.getMes());
+
             return repo.save(existing);
         }).orElseGet(() -> save(dto));
     }

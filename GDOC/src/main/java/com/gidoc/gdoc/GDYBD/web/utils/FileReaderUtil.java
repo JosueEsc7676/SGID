@@ -27,7 +27,8 @@ public final class FileReaderUtil {
         List<String> expectedHeaders = new ArrayList<>();
 
         if (type == ImportService.Type.DOCENTES) {
-            expectedHeaders = Arrays.asList("idpersona_a","depersona","nip","codigo_infra");
+            expectedHeaders = Arrays.asList("idpersona_a", "depersona", "doc4", "doc5", "pens");
+
         } else if (type == ImportService.Type.ESCUELAS) {
             expectedHeaders = Arrays.asList("c_infra","numero","distrito","nombre","municipio");
         }

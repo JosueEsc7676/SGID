@@ -42,7 +42,10 @@
                 <columns>
                     <TableColumn fx:id="colDocId" text="ID" prefWidth="150" styleClass="table-column"/>
                     <TableColumn fx:id="colDocName" text="Nombre" prefWidth="400" styleClass="table-column"/>
-                    <TableColumn fx:id="colDocImported" text="Fecha Importación" prefWidth="400" styleClass="table-column"/>
+                    <TableColumn fx:id="colDoc4" text="DOC4" prefWidth="120" styleClass="table-column"/>
+                    <TableColumn fx:id="colDoc5" text="DOC5" prefWidth="120" styleClass="table-column"/>
+                    <TableColumn fx:id="colPens" text="PENS" prefWidth="120" styleClass="table-column"/>
+                    <TableColumn fx:id="colDocImported" text="Fecha Importación" prefWidth="250" styleClass="table-column"/>
                 </columns>
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

@@ -22,7 +22,7 @@ public final class ImportValidator {
                 .map(k -> k.replaceAll("\\s+", "").toLowerCase())
                 .collect(Collectors.toSet());
 
-        Set<String> cabecerasDocentes = Set.of("idpersona_a","depersona","nip","codigo_infra");
+        Set<String> cabecerasDocentes = Set.of("idpersona_a", "depersona", "doc4", "doc5", "pens");
         Set<String> cabecerasEscuelas = Set.of("c_infra","numero","distrito","nombre","municipio");
 
         boolean esArchivoDocentes = columnas.containsAll(cabecerasDocentes);

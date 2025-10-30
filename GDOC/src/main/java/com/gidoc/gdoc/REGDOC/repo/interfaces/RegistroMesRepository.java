@@ -20,7 +20,6 @@ public interface RegistroMesRepository extends JpaRepository<RegistroMes, Long> 
     @Query("SELECT r FROM RegistroMes r WHERE LOWER(r.cInfra) = LOWER(:cInfra)")
     List<RegistroMes> findByCInfraIgnoreCase(@Param("cInfra") String cInfra);
 
-    // ✅ NUEVO: Método para obtener todos los registros sin filtrar por mes
     @Query("SELECT DISTINCT r.mes FROM RegistroMes r ORDER BY " +
             "CASE r.mes " +
             "WHEN 'enero' THEN 1 " +
