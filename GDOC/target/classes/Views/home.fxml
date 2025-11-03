@@ -51,6 +51,18 @@
                         </VBox>
 
                         <Region HBox.hgrow="ALWAYS"/>
+                        <!-- Botones de ventana personalizados -->
+<!--                        <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 0 15 0 0;">-->
+<!--                            <Button fx:id="btnMin" text="–"-->
+<!--                                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 18px;"-->
+<!--                                    onAction="#minimizarVentana"/>-->
+<!--                            <Button fx:id="btnMax" text="⬜"-->
+<!--                                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14px;"-->
+<!--                                    onAction="#maximizarVentana"/>-->
+<!--                            <Button fx:id="btnClose" text="✕"-->
+<!--                                    style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 14px;"-->
+<!--                                    onAction="#cerrarVentana"/>-->
+<!--                        </HBox>-->
 
                         <!-- Info usuario -->
                         <VBox alignment="CENTER_RIGHT" spacing="5">

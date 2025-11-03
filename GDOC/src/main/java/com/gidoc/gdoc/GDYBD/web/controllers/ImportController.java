@@ -216,11 +216,31 @@ public class ImportController {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
-
+//Este bloque de codigo sirve para detectar si el hom esta activo como contenedor principal.
+// si lo esta carga la vista, si no lo esta abre una ventana nueva
     @FXML
     private void abrirVistaEscuelas() {
-        applicationManager.cambiarVista("/Views/EscuelasView.fxml", "Gestión de Escuelas",true);
+        try {
+            // Intenta obtener el controlador del Home actual
+            HomeController homeController = applicationContext.getBean(HomeController.class);
+
+            // Si el Home está visible en la escena actual, carga la vista dentro del mainContent
+            if (homeController != null) {
+                log.info("Cargando vista de Escuelas dentro del Home...");
+                homeController.cargarVista("/Views/EscuelasView.fxml");
+            } else {
+                // En caso de no estar dentro del Home (fallback)
+                log.warn("No se encontró HomeController activo, abriendo vista en nueva ventana.");
+                applicationManager.cambiarVista("/Views/EscuelasView.fxml", "Gestión de Escuelas", true);
+            }
+
+        } catch (Exception e) {
+            log.error("Error al intentar cargar EscuelasView dentro del Home", e);
+            // Como respaldo, abre en una nueva ventana
+            applicationManager.cambiarVista("/Views/EscuelasView.fxml", "Gestión de Escuelas", true);
+        }
     }
+
 
 
     @FXML

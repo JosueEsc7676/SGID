@@ -236,13 +236,47 @@ public class EscuelasController {
 
     @FXML
     private void volverABaseDocentes() {
-        applicationManager.cambiarVista("/Views/import_view.fxml", "Gestión de Escuelas",true);
-    }
+        try {
+            // Intenta obtener el controlador del Home actual
+            HomeController homeController = applicationContext.getBean(HomeController.class);
+
+            // Si el Home está visible en la escena actual, carga la vista dentro del mainContent
+            if (homeController != null) {
+                log.info("Cargando vista de Gestion de base de datos docente dentro del Home...");
+                homeController.cargarVista("/Views/import_view.fxml");
+            } else {
+                // En caso de no estar dentro del Home (fallback)
+                log.warn("No se encontró HomeController activo, abriendo vista en nueva ventana.");
+                applicationManager.cambiarVista("/Views/import_view.fxml", "Gestión de BD Escuelas", true);
+            }
+
+        } catch (Exception e) {
+            log.error("Error al intentar cargar import_view dentro del Home", e);
+            // Como respaldo, abre en una nueva ventana
+            applicationManager.cambiarVista("/Views/import_view.fxml", "Gestión de BD Docentes", true);
+        }    }
 
     @FXML
     private void volverAlHome() {
-        applicationManager.cambiarVista("/Views/home.fxml", "Gestión de Escuelas",true);
-    }
+        try {
+            // Intenta obtener el controlador del Home actual
+            HomeController homeController = applicationContext.getBean(HomeController.class);
+
+            // Si el Home está visible en la escena actual, carga la vista dentro del mainContent
+            if (homeController != null) {
+                log.info("Cargando vista Principal Home...");
+                homeController.cargarVista("/Views/home.fxml");
+            } else {
+                // En caso de no estar dentro del Home (fallback)
+                log.warn("No se encontró HomeController activo, abriendo vista en nueva ventana.");
+                applicationManager.cambiarVista("/Views/home.fxml", "Dashboard", true);
+            }
+
+        } catch (Exception e) {
+            log.error("Error al intentar cargar Home", e);
+            // Como respaldo, abre en una nueva ventana
+            applicationManager.cambiarVista("/Views/home.fxml", "Dashboard", true);
+        }    }
 
     @FXML
     private void agregarEscuela() {

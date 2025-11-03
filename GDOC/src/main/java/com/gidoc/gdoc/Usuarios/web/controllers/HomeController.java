@@ -9,12 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +22,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.YearMonth;
-@Component
 
+@Component
 @Controller
 @Slf4j
 public class HomeController {
@@ -37,21 +35,23 @@ public class HomeController {
     @FXML private Label menuUserInfo;
     @FXML private Button logoutButton;
     @FXML private Button menuButton;
-//    @FXML private ScrollPane menuPanel;
     @FXML private VBox adminSecuritySection;
     @FXML private FlowPane quickMonthButtons;
     @FXML private StackPane mainContent;
     @FXML private AnchorPane menuPanel;
-    @FXML
-    private Rectangle menuOverlay;
-
+    @FXML private Rectangle menuOverlay;
+    @FXML private Button btnMin;
+    @FXML private Button btnMax;
+    @FXML private Button btnClose;
+    @FXML private AnchorPane customBar;
     private Usuario usuarioLogueado;
     private boolean menuAbierto = false;
     private boolean animando = false;
     private YearMonth currentYearMonth;
 
     private final ApplicationManager applicationManager;
-    private final UserSession userSession; // 🔹 Inyección del UserSession
+    private final UserSession userSession;
+
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -61,7 +61,11 @@ public class HomeController {
         this.userSession = userSession;
     }
 
-
+    // ============================================================
+    // Inicialización del layout base
+    // ============================================================
+    private double xOffset = 0;
+    private double yOffset = 0;
     @FXML
     public void initialize() {
         log.info("HomeController inicializado correctamente");
@@ -82,12 +86,26 @@ public class HomeController {
                 log.warn("No se encontró usuario en sesión al inicializar Home");
             }
         });
-        // 🔹 Cargar automáticamente el formulario principal al abrir el Home
-        Platform.runLater(this::cargarVistaRegistroDocente);  // 👈 añadido
+
+        // ✅ Cargar automáticamente el formulario principal al abrir el Home
+        Platform.runLater(() -> cargarVista("/Views/registro_form.fxml"));
+        Platform.runLater(() -> {
+            mainContent.getScene().setOnMousePressed(event -> {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            });
+
+            mainContent.getScene().setOnMouseDragged(event -> {
+                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            });
+        });
     }
 
-
-
+    // ============================================================
+    // Control del usuario
+    // ============================================================
     public void setUsuarioLogueado(Usuario usuario) {
         this.usuarioLogueado = usuario;
         if (usuario != null) {
@@ -99,6 +117,7 @@ public class HomeController {
             adminSecuritySection.setManaged(usuario.getAdministrador());
         }
     }
+
     public void cargarUsuario(Usuario usuario) {
         if (usuario != null) {
             userSession.setUsuarioActual(usuario);
@@ -107,16 +126,14 @@ public class HomeController {
         }
     }
 
-    // 🔹 Alternar apertura/cierre del menú lateral
+    // ============================================================
+    // Menú lateral animado
+    // ============================================================
     @FXML
     private void toggleMenu() {
         if (animando) return;
-
-        if (menuAbierto) {
-            cerrarMenu();
-        } else {
-            abrirMenu();
-        }
+        if (menuAbierto) cerrarMenu();
+        else abrirMenu();
     }
 
     private void abrirMenu() {
@@ -140,79 +157,73 @@ public class HomeController {
         slideOut.setFromX(0);
         slideOut.setToX(-250);
         slideOut.setOnFinished(e -> {
-            menuPanel.setVisible(false);   // ✅ Ocultar
-            menuPanel.setManaged(false);   // ✅ Excluir del layout
-            menuAbierto = false;           // ✅ Marcar como cerrado
+            menuPanel.setVisible(false);
+            menuPanel.setManaged(false);
+            menuAbierto = false;
             animando = false;
         });
         slideOut.play();
     }
+    @FXML
+    private void minimizarVentana() {
+        Stage stage = (Stage) btnMin.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
+    @FXML
+    private void maximizarVentana() {
+        Stage stage = (Stage) btnMax.getScene().getWindow();
+        stage.setMaximized(!stage.isMaximized());
+    }
 
+    @FXML
+    private void cerrarVentana() {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+    }
 
-
-    // 🔹 Cargar el formulario REGDOC automáticamente con contexto Spring
-    private void cargarVistaRegistroDocente() {
+    // ============================================================
+    // NUEVO MÉTODO UNIVERSAL DE CARGA DE VISTAS
+    // ============================================================
+    public void cargarVista(String rutaFXML) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/Views/registro_form.fxml")
-            );
-
-            // ✅ Usa el ApplicationContext para que @Autowired funcione
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
             loader.setControllerFactory(applicationContext::getBean);
+            Parent nuevaVista = loader.load();
 
-            Parent vistaForm = loader.load();
-            mainContent.getChildren().setAll(vistaForm);
-
-
-
-            log.info("Formulario REGDOC cargado automáticamente con inyección Spring");
-            // --------- NUEVO: fijar tamaño preferido y margen ----------
-            vistaForm.prefWidth(1500);
-            vistaForm.prefHeight(1200);
-            // ----------------------------------------------------------
-
+            mainContent.getChildren().setAll(nuevaVista);
+            log.info("Vista cargada correctamente dentro del Home: {}", rutaFXML);
         } catch (IOException e) {
-            log.error("Error al cargar el formulario REGDOC automáticamente", e);
+            log.error("Error al cargar la vista {}", rutaFXML, e);
         }
     }
 
-
-    @FXML
-    private void logout() {
-        log.info("Cerrando sesión de usuario...");
-        applicationManager.cerrarSesion();
-        userSession.clear(); // 🔹 Limpiamos la sesión
-    }
-
-    @FXML
-    private void abrirImportarBD() {
-        applicationManager.cambiarVista("/Views/import_view.fxml", "Importar Docentes",true);
-
-    }
-
-    @FXML
-    private void abrirRegistroDocente() {
+    // ============================================================
+    // Navegación de vistas (manteniendo todas las anteriores)
+    // ============================================================
+    @FXML private void abrirImportarBD() {
         cerrarMenu();
-        log.info("Abriendo Registrar Docente (REGDOC)");
-        applicationManager.cambiarVista("/Views/registro_form.fxml", "Registrar Incapacidad - Registro Docente", true);
+        cargarVista("/Views/import_view.fxml");
     }
 
-    @FXML
-    private void abrirHistorialMensual() { cerrarMenu(); log.info("Abriendo Historial Mensual");
-        applicationManager.cambiarVista("/Views/historial_mensual.fxml", "Gestion De Historial Mensual", true);
+    @FXML private void abrirRegistroDocente() {
+        cerrarMenu();
+        cargarVista("/Views/registro_form.fxml");
     }
 
+    @FXML private void abrirHistorialMensual() {
+        cerrarMenu();
+        cargarVista("/Views/historial_mensual.fxml");
+    }
 
-    // 🔹 Resto de métodos de navegación se mantiene intacto
     @FXML private void abrirDashboard() { cerrarMenu(); log.info("Abriendo Dashboard Principal"); }
     @FXML private void abrirVistaGeneral() { cerrarMenu(); log.info("Abriendo Vista General"); }
     @FXML private void abrirAccesosRapidos() { cerrarMenu(); log.info("Abriendo Accesos Rápidos"); }
     @FXML private void abrirCambioPassword() { cerrarMenu(); log.info("Abriendo Cambio de Contraseña"); }
     @FXML private void abrirGestionUsuarios() { cerrarMenu(); log.info("Abriendo Gestión de Usuarios"); }
     @FXML private void abrirImportarDocentes() { cerrarMenu(); log.info("Abriendo Importar Docentes"); }
-    @FXML private void abrirBuscarNIP() { cerrarMenu(); log.info("Abriendo Buscar por NIP"); }
-    @FXML private void abrirBuscarINFRA() { cerrarMenu(); log.info("Abriendo Buscar INFRA"); }
+    @FXML private void abrirBuscarNIP() { cerrarMenu(); cargarVista("/Views/buscar_nip.fxml"); }
+    @FXML private void abrirBuscarINFRA() { cerrarMenu(); cargarVista("/Views/buscar_infra.fxml"); }
 
     @FXML private void abrirHistorialIncapacidades() { cerrarMenu(); log.info("Abriendo Historial Incapacidades"); }
     @FXML private void abrirRegistrarMaternidad() { cerrarMenu(); log.info("Abriendo Registrar Maternidad"); }
@@ -234,4 +245,14 @@ public class HomeController {
     @FXML private void abrirReporteMensual(ActionEvent event) { cerrarMenu(); log.info("Abriendo Reporte Mensual"); }
     @FXML private void abrirFiltrosConsolidado(ActionEvent event) { cerrarMenu(); log.info("Abriendo Filtros Consolidado"); }
     @FXML private void abrirExportarImprimir(ActionEvent event) { cerrarMenu(); log.info("Abriendo Exportar/Imprimir"); }
+
+    // ============================================================
+    // Logout
+    // ============================================================
+    @FXML
+    private void logout() {
+        log.info("Cerrando sesión de usuario...");
+        applicationManager.cerrarSesion();
+        userSession.clear();
+    }
 }

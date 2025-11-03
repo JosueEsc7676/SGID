@@ -559,3 +559,76 @@
      -fx-background-color: rgba(169,193,217,0.8);
  }
 
+#btnClose:hover {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+#btnMin:hover, #btnMax:hover {
+    -fx-background-color: #2E2E3E;
+}
+
+
+
+
+/* WINDOW CONTROLS - estilo tipo Spotify */
+.window-btn {
+    -fx-background-color: rgba(28,30,33,0.9); /* oscuro similar a Spotify bar */
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 6 10 6 10;      /* tamaño del botón */
+    -fx-background-radius: 6;    /* redondeado */
+    -fx-border-radius: 6;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 1);
+    -fx-font-weight: 600;
+    -fx-min-width: 32px;
+    -fx-min-height: 28px;
+}
+
+/* separación entre icono y contorno si usas textos */
+.window-btn .text {
+    -fx-font-size: 13px;
+}
+
+/* hover general */
+.window-btn:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 8, 0, 0, 2);
+    -fx-translate-y: -1px;
+}
+
+/* minimizar: tenue */
+.window-btn.btn-min {
+    -fx-background-color: rgba(30,33,37,0.85);
+}
+.window-btn.btn-min:hover {
+    -fx-background-color: rgba(40,44,49,0.95);
+}
+
+/* maximizar: acento suave (puedes usar color blanco o verde discreto) */
+.window-btn.btn-max {
+    -fx-background-color: rgba(30,33,37,0.85);
+}
+.window-btn.btn-max:hover {
+    -fx-background-color: rgba(60,64,69,1.0);
+}
+
+/* cerrar: rojo al pasar el mouse (como windows style) */
+.window-btn.btn-close {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: #ffffff;
+}
+.window-btn.btn-close:hover {
+    -fx-background-color: #d9534f;    /* rojo */
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(217,83,79,0.45), 8, 0, 0, 2);
+}
+
+/* Si quieres íconos circulares (opcional): */
+.window-btn.circular {
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-min-width: 34;
+    -fx-min-height: 34;
+}
+
