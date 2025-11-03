@@ -41,7 +41,7 @@
                 <TextField fx:id="txtNombre" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
                 <Label text="Horas:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
-                <TextField fx:id="txtHoras" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+                <TextField fx:id="txtHora" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
 
                 <Label text="Desde:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
                 <DatePicker fx:id="dpDesde" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
@@ -49,8 +49,8 @@
                 <Label text="Hasta:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
                 <DatePicker fx:id="dpHasta" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
 
-                <Label text="Días:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-                <TextField fx:id="txtHora" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                <Label text="Días:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDias" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
 
                 <Label text="Observaciones:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
                 <TextArea fx:id="txtObservaciones" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
@@ -62,23 +62,14 @@
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button fx:id="btnGuardar" text="Guardar" onAction="#guardarRegistro"
                         style="-fx-background-color: #C62828; -fx-text-fill: white; -fx-font-weight: bold;"/>
-            </HBox>
 
-            <Label text="Registros Guardados:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-            <TableView fx:id="tblEnfgra" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="colInfra" text="C INFRA"/>
-                    <TableColumn fx:id="colLugar" text="Lugar de Trabajo"/>
-                    <TableColumn fx:id="colNip" text="NIP"/>
-                    <TableColumn fx:id="colNombre" text="Nombre"/>
-                    <TableColumn fx:id="colDesde" text="Desde"/>
-                    <TableColumn fx:id="colHasta" text="Hasta"/>
-                    <TableColumn fx:id="colDias" text="Días"/>
-                    <TableColumn fx:id="colHora" text="Hora"/>
-                    <TableColumn fx:id="colObs" text="Observaciones"/>
-                    <TableColumn fx:id="colFechaRecibido" text="Fecha Recibido"/>
-                </columns>
-            </TableView>
+                <Button fx:id="btnVerRegistros" text="Ver registros guardados" onAction="#abrirVistaRegistros"
+                        style="-fx-background-color: #1976D2; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+                <Button fx:id="btnVolverInicio" text="Regresar al inicio" onAction="#volverInicio"
+                        style="-fx-background-color: #455A64; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

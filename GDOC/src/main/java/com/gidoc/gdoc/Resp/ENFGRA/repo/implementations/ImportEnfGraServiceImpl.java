@@ -36,8 +36,9 @@ public class ImportEnfGraServiceImpl implements ImportEnfGraService {
     }
 
     @Override
-    public String obtenerNombrePorNip(String idpersonaA) {
-        return docenteRepo.findByIdpersonaA(idpersonaA)
+    public String obtenerNombrePorNip(String nip) {
+        return docenteRepo.findByIdpersonaAContainingIgnoreCase(nip).stream()
+                .findFirst()
                 .map(Docente::getDepersona)
                 .orElse("No encontrado");
     }

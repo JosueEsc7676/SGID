@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.gidoc.gdoc.Resp.ENFGRA.web.controllers.EnfGraController">
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #0D47A1; -fx-padding: 15;">
+            <Label text="Registros Guardados de Enfermedades Graves" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnVolverFormulario" text="Volver al formulario" onAction="#abrirFormularioEnfGra"
+                    style="-fx-background-color: #455A64; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tblEnfgra" prefHeight="500">
+            <columns>
+                <TableColumn fx:id="colInfra" text="C INFRA"/>
+                <TableColumn fx:id="colLugar" text="Lugar de Trabajo"/>
+                <TableColumn fx:id="colNip" text="NIP"/>
+                <TableColumn fx:id="colNombre" text="Nombre"/>
+                <TableColumn fx:id="colDesde" text="Desde"/>
+                <TableColumn fx:id="colHasta" text="Hasta"/>
+                <TableColumn fx:id="colDias" text="Días"/>
+                <TableColumn fx:id="colHora" text="Hora"/>
+                <TableColumn fx:id="colObs" text="Observaciones"/>
+                <TableColumn fx:id="colFechaRecibido" text="Fecha Recibido"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
+

@@ -5,13 +5,19 @@ import com.gidoc.gdoc.Resp.ENFGRA.domain.services.ImportEnfGraService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Slf4j
@@ -30,6 +36,7 @@ public class EnfGraController {
     @FXML private TextField txtNip;
     @FXML private TextField txtNombre;
     @FXML private TextField txtHora;
+    @FXML private TextField txtDias;
     @FXML private DatePicker dpDesde;
     @FXML private DatePicker dpHasta;
     @FXML private TextArea txtObservaciones;
@@ -46,6 +53,10 @@ public class EnfGraController {
     @FXML private TableColumn<EnfGra, LocalDate> colHasta;
     @FXML private TableColumn<EnfGra, String> colObs;
     @FXML private TableColumn<EnfGra, LocalDate> colFechaRecibido;
+    @FXML private Button btnVolverInicio;
+    @FXML private Button btnVolverFormulario;
+
+
 
     @FXML
     public void initialize() {
@@ -78,10 +89,15 @@ public class EnfGraController {
         LocalDate desde = dpDesde.getValue();
         LocalDate hasta = dpHasta.getValue();
         if (desde != null && hasta != null && !hasta.isBefore(desde)) {
-            long dias = hasta.toEpochDay() - desde.toEpochDay() + 1;
-            txtHora.setText(String.valueOf(dias)); // Puedes cambiar esto si "hora" no representa días
+            long dias = ChronoUnit.DAYS.between(desde, hasta) + 1;
+            txtDias.setText(String.valueOf(dias));
+            txtHora.clear(); // horas se escriben manualmente
+        } else {
+            txtDias.clear();
         }
     }
+
+
 
     @FXML
     private void guardarRegistro(ActionEvent event) {
@@ -92,6 +108,7 @@ public class EnfGraController {
             registro.setNip(txtNip.getText());
             registro.setNombre(txtNombre.getText());
             registro.setHora(txtHora.getText());
+            registro.setDias(txtDias.getText()); // ✅ guarda los días calculados
             registro.setDesde(dpDesde.getValue());
             registro.setHasta(dpHasta.getValue());
             registro.setObservaciones(txtObservaciones.getText());
@@ -116,5 +133,54 @@ public class EnfGraController {
         alerta.setTitle(titulo);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+
+    @FXML
+    private void abrirVistaRegistros() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/EnfGraRegistros.fxml"));
+            Parent vista = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Registros Guardados");
+            stage.setScene(new Scene(vista));
+            stage.show();
+        } catch (IOException e) {
+            log.error("No se pudo abrir la vista de registros", e);
+        }
+    }
+
+    @FXML
+    private void volverInicio() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Home.fxml"));
+            Parent vista = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Inicio");
+            stage.setScene(new Scene(vista));
+            stage.show();
+
+            // Opcional: cerrar la ventana actual
+            Stage actual = (Stage) btnVolverInicio.getScene().getWindow();
+            actual.close();
+        } catch (IOException e) {
+            log.error("No se pudo regresar al inicio", e);
+        }
+    }
+    @FXML
+    private void abrirFormularioEnfGra() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/EnfGra.fxml"));
+            Parent vista = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Formulario Enfermedades Graves");
+            stage.setScene(new Scene(vista));
+            stage.show();
+
+            // Cierra la ventana actual
+            Stage actual = (Stage) btnVolverFormulario.getScene().getWindow();
+            actual.close();
+        } catch (IOException e) {
+            log.error("No se pudo abrir el formulario de Enfermedades Graves", e);
+        }
     }
 }
